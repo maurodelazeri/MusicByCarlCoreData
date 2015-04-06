@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="1.16" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A389" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="durationString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="isInstrumental" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="releaseYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="albumArtist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="artistAlbums" inverseEntity="Artist" syncable="YES"/>
+        <relationship name="albumSongs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Song" inverseName="fromAlbum" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Artist" representedClassName="Artist" syncable="YES">
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artistAlbums" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Album" inverseName="albumArtist" inverseEntity="Album" syncable="YES"/>
+        <relationship name="artistGenres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="genreArtists" inverseEntity="Genre" syncable="YES"/>
+    </entity>
+    <entity name="CurrentSongsInfoArchive" representedClassName="CurrentSongsInfoArchive" syncable="YES">
+        <attribute name="archivedCurrentSongIndex" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="archivedCurrentSongsList" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedSongsNeverPlayed" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedSongsOlderThanFourteenDays" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedSongsOlderThanSevenDays" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedSongsOlderThanThirtyDays" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedSongsOlderThanTwentyOneDays" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <entity name="Genre" representedClassName="Genre" syncable="YES">
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="genreArtists" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Artist" inverseName="artistGenres" inverseEntity="Artist" syncable="YES"/>
+    </entity>
+    <entity name="LoggerArchive" representedClassName="LoggerArchive" syncable="YES">
+        <attribute name="archivedLogMessages" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <entity name="Playlist" representedClassName="Playlist" syncable="YES">
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="playlistSongs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Song" inverseName="inPlaylists" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES">
+        <attribute name="albumArtist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="albumArtwork" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="albumPersistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="albumTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetURL" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="lastPlayedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="songTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedSongTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="fromAlbum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="albumSongs" inverseEntity="Album" syncable="YES"/>
+        <relationship name="inPlaylists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Playlist" inverseName="playlistSongs" inverseEntity="Playlist" syncable="YES"/>
+    </entity>
+    <entity name="UserPreferencesArchive" representedClassName="UserPreferencesArchive" syncable="YES">
+        <attribute name="archivedInstrumentalAlbums" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="archivedShuffleFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="archivedVolumeLevel" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="Artist" positionX="0" positionY="0" width="128" height="135"/>
+        <element name="CurrentSongsInfoArchive" positionX="27" positionY="153" width="128" height="150"/>
+        <element name="Genre" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="LoggerArchive" positionX="9" positionY="135" width="128" height="60"/>
+        <element name="Playlist" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Song" positionX="0" positionY="0" width="128" height="300"/>
+        <element name="UserPreferencesArchive" positionX="18" positionY="135" width="128" height="90"/>
+    </elements>
+</model>

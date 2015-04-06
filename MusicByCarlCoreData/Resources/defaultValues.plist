@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>shuffleFlag</key>
+	<false/>
+	<key>instrumentalAlbums</key>
+	<array>
+		<dict>
+			<key>artist</key>
+			<string>Various Artists</string>
+			<key>title</key>
+			<string>All-Star Christmas</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Barry White</string>
+			<key>title</key>
+			<string>All-Time Greatest Hits</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Boston Pops Orchestra</string>
+			<key>title</key>
+			<string>America The Beautiful</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>The Peter Fuller Orchestra and Singers</string>
+			<key>title</key>
+			<string>American Evergreens</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>David Benoit</string>
+			<key>title</key>
+			<string>American Landscape</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Arcanum</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Hiroshima</string>
+			<key>title</key>
+			<string>The Best of Hiroshima</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Phil Keaggy</string>
+			<key>title</key>
+			<string>Beyond Nature</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Jay Leach</string>
+			<key>title</key>
+			<string>Beyond Words</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Various Artists</string>
+			<key>title</key>
+			<string>Celtic Christmas Vol. I</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Vince Guaraldi Trio</string>
+			<key>title</key>
+			<string>A Charlie Brown Christmas [Expanded]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Chuck Mangione</string>
+			<key>title</key>
+			<string>Children Of Sanchez</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas 1984</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas Celebration</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Trans-Siberian Orchestra</string>
+			<key>title</key>
+			<string>Christmas Eve and Other Stories</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas Extraordinaire</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas in the Aire</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas Live</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Christmas Song</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Kenny G</string>
+			<key>title</key>
+			<string>Classics in the Key of G</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Dave Grusin</string>
+			<key>title</key>
+			<string>Collection</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Emerson, Lake &amp; Palmer</string>
+			<key>title</key>
+			<string>Come And See The Show: The Best Of Emerson Lake &amp; Palmer</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Dave Brubeck</string>
+			<key>title</key>
+			<string>A Dave Brubeck Christmas</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>David Lanz And Paul Speer</string>
+			<key>title</key>
+			<string>Desert Vision</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Eric Weissberg</string>
+			<key>title</key>
+			<string>Dueling Banjos (US Release)</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Early Alchemy</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Chuck Mangione</string>
+			<key>title</key>
+			<string>An Evening Of Magic: Live At The Hollywood Bowl</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Kenny G</string>
+			<key>title</key>
+			<string>Faith: A Holiday Album</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Chuck Mangione</string>
+			<key>title</key>
+			<string>Feels So Good</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>The Philadelphia Brass Ensemble</string>
+			<key>title</key>
+			<string>A Festival of Carols in Brass</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Walter Murphy</string>
+			<key>title</key>
+			<string>A Fifth of Beethoven</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Nova Menco</string>
+			<key>title</key>
+			<string>Fortune Teller</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>David Benoit</string>
+			<key>title</key>
+			<string>Freedom at Midnight</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Fresh Aire Christmas 1988</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Fresh Aire III</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Hugh Masekela</string>
+			<key>title</key>
+			<string>Grazing In the Grass - The Best of Hugh Masekela</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Herb Alpert &amp; The Tijuana Brass</string>
+			<key>title</key>
+			<string>Going Places</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Kenny G</string>
+			<key>title</key>
+			<string>Greatest Hits</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Frank Sinatra</string>
+			<key>title</key>
+			<string>Greatest Hits</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Vince Guaraldi Trio</string>
+			<key>title</key>
+			<string>Jazz Impressions Of Black Orpheus</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Various Artists</string>
+			<key>title</key>
+			<string>The Little Drummer Boy [Passport Audio]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Herb Alpert &amp; The Tijuana Brass</string>
+			<key>title</key>
+			<string>The Lonely Bull</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Various Artists</string>
+			<key>title</key>
+			<string>Mad About Kids&apos; Classics</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>London Festival Orchestra</string>
+			<key>title</key>
+			<string>Majesty and Wonder</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mason Williams</string>
+			<key>title</key>
+			<string>The Mason Williams Phonograph Record</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Enya</string>
+			<key>title</key>
+			<string>The Memory of Trees</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Kenny G</string>
+			<key>title</key>
+			<string>Miracles: The Holiday Album</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Academy of St. Martin in the Fields, Alan Civil, Neil Black &amp; Sir Neville Marriner</string>
+			<key>title</key>
+			<string>Mozart: Horn Concertos &amp; Oboe Concerto</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Carlo Maria Giulini &amp; Chicago Symphony Orchestra</string>
+			<key>title</key>
+			<string>Mussorgsky: Pictures at an Exhibition and Other Works - Disc 1</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Carlo Maria Giulini &amp; Chicago Symphony Orchestra</string>
+			<key>title</key>
+			<string>Mussorgsky: Pictures at an Exhibition and Other Works - Disc 2</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Various Artists</string>
+			<key>title</key>
+			<string>Nadia&apos;s Theme</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Tim Weisberg</string>
+			<key>title</key>
+			<string>Naked Eyes</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>David Lanz And Paul Speer</string>
+			<key>title</key>
+			<string>Natural States</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Maynard Ferguson</string>
+			<key>title</key>
+			<string>New Vintage</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Dave Grusin</string>
+			<key>title</key>
+			<string>Night Lines</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Berlin Symphony Orchestra</string>
+			<key>title</key>
+			<string>Nutcracker Highlights</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Larry Carlton</string>
+			<key>title</key>
+			<string>On Solid Ground</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Daniel Kane</string>
+			<key>title</key>
+			<string>on the street where you live</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Boston Pops Orchestra</string>
+			<key>title</key>
+			<string>Pops Christmas Party</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Arthur Fielder &amp; Boston Pops Orchestra</string>
+			<key>title</key>
+			<string>Pops Christmas Party</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Positive Thinking</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Robert Plant</string>
+			<key>title</key>
+			<string>The Principle Of Moments</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Red Dust &amp; Spanish Lace</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Reference Point</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Yanni</string>
+			<key>title</key>
+			<string>Reflections of Passion</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Acoustic Alchemy</string>
+			<key>title</key>
+			<string>Roseland</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Enya</string>
+			<key>title</key>
+			<string>Shepherd Moons</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>John Philip Sousa</string>
+			<key>title</key>
+			<string>Sousa Favorites</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Paul Washington Marching Band</string>
+			<key>title</key>
+			<string>Sousa Favorites [St. Clair]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Stanley Kubrick : Music From His Greatest Movies</string>
+			<key>title</key>
+			<string>Stanley Kubrick : Music From His Greatest Movies</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Marvin Hamlisch</string>
+			<key>title</key>
+			<string>The Sting (25th Anniversary Edition) [Original Motion Picture Soundtrack]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Wendy Carlos</string>
+			<key>title</key>
+			<string>Switched-On Bach</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Erich Kunzel</string>
+			<key>title</key>
+			<string>Tchaikovsky: Nutcracker Favorite Selections</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>The Dave Brubeck Quartet</string>
+			<key>title</key>
+			<string>Time Out</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Soundtrack</string>
+			<key>title</key>
+			<string>Titanic</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mike Oldfield</string>
+			<key>title</key>
+			<string>Tubular Bells [2009 Remastered Edition]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Dan Fogelberg/Tim Weisberg</string>
+			<key>title</key>
+			<string>Twin Sons of Different Mothers</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Jay Leach</string>
+			<key>title</key>
+			<string>Unto Him</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Trans-Siberian Orchestra</string>
+			<key>title</key>
+			<string>Upon The Winter Solstice</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Academy of St. Martin In the Fields, Alan Loveday &amp; Sir Neville Marriner</string>
+			<key>title</key>
+			<string>Vivaldi: The Four Seasons</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Enya</string>
+			<key>title</key>
+			<string>Watermark [Bonus Track]</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Herb Alpert &amp; The Tijuana Brass</string>
+			<key>title</key>
+			<string>Whipped Cream &amp; Other Delights</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Jay Leach</string>
+			<key>title</key>
+			<string>Wondrous Love</string>
+		</dict>
+		<dict>
+			<key>artist</key>
+			<string>Mannheim Steamroller</string>
+			<key>title</key>
+			<string>Yellowstone: The Music of Nature</string>
+		</dict>
+        <dict>
+            <key>artist</key>
+            <string>Miles Davis</string>
+            <key>title</key>
+            <string>Kind Of Blue [Disc 1]</string>
+        </dict>
+        <dict>
+            <key>artist</key>
+            <string>Miles Davis</string>
+            <key>title</key>
+            <string>Kind Of Blue [Disc 2]</string>
+        </dict>
+	</array>
+	<key>volumeLevel</key>
+	<integer>1</integer>
+	<key>relaxationSongs</key>
+	<array>
+		<dict>
+			<key>artist</key>
+			<string>.001</string>
+			<key>title</key>
+			<string>Country Inn</string>
+		</dict>
+        <dict>
+            <key>artist</key>
+            <string>.001</string>
+            <key>title</key>
+            <string>Five Finger Relaxation</string>
+        </dict>
+        <dict>
+            <key>artist</key>
+            <string>.001</string>
+            <key>title</key>
+            <string>Progressive Muscle Relaxation and Mental Relaxation</string>
+        </dict>
+        <dict>
+            <key>artist</key>
+            <string>.001</string>
+            <key>title</key>
+            <string>Jim Gray</string>
+        </dict>
+	</array>
+</dict>
+</plist>

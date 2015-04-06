@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="1.1" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="12F45" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Album" representedClassName="Album" syncable="YES">
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artwork" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="durationString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="isInstrumental" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="releaseYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="albumArtist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Artist" inverseName="artistAlbums" inverseEntity="Artist" syncable="YES"/>
+        <relationship name="albumSongs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Song" inverseName="fromAlbum" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Artist" representedClassName="Artist" syncable="YES">
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="artistAlbums" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Album" inverseName="albumArtist" inverseEntity="Album" syncable="YES"/>
+        <relationship name="artistGenre" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="genreArtists" inverseEntity="Genre" syncable="YES"/>
+    </entity>
+    <entity name="Genre" representedClassName="Genre" syncable="YES">
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <relationship name="genreArtists" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Artist" inverseName="artistGenre" inverseEntity="Artist" syncable="YES"/>
+    </entity>
+    <entity name="Playlist" representedClassName="Playlist" syncable="YES">
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="playlistSongs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Song" inverseName="inPlaylists" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES">
+        <attribute name="albumArtist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="albumArtwork" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="albumPersistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="albumTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="artist" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetURL" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="genre" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="indexCharacter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="internalID" optional="YES" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="lastPlayedTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="persistentID" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="songTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="strippedSongTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="trackNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="fromAlbum" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Album" inverseName="albumSongs" inverseEntity="Album" syncable="YES"/>
+        <relationship name="inPlaylists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Playlist" inverseName="playlistSongs" inverseEntity="Playlist" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Album" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Artist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Playlist" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Song" positionX="0" positionY="0" width="0" height="0"/>
+    </elements>
+</model>
