@@ -11,8 +11,6 @@
 #import "AutoScrollLabel.h"
 
 @implementation AutoScrollLabel
-@synthesize pauseInterval;
-@synthesize bufferSpaceBetweenLabels;
 
 - (void) commonInit
 {
@@ -23,10 +21,10 @@
 		[self addSubview:label[i]];
 	}
 	
-	scrollDirection = AUTOSCROLL_SCROLL_LEFT;
-	scrollSpeed = DEFAULT_PIXELS_PER_SECOND;
-	pauseInterval = DEFAULT_PAUSE_TIME;
-	bufferSpaceBetweenLabels = LABEL_BUFFER_SPACE;
+	_scrollDirection = AUTOSCROLL_SCROLL_LEFT;
+	_scrollSpeed = DEFAULT_PIXELS_PER_SECOND;
+	_pauseInterval = DEFAULT_PAUSE_TIME;
+	_bufferSpaceBetweenLabels = LABEL_BUFFER_SPACE;
 	self.showsVerticalScrollIndicator = NO;
 	self.showsHorizontalScrollIndicator = NO;
 	self.userInteractionEnabled = NO;
@@ -79,7 +77,7 @@
 	isScrolling = NO;
 
 	if ([finished intValue] == 1 && label[0].frame.size.width > self.frame.size.width){
-		[NSTimer scheduledTimerWithTimeInterval:pauseInterval target:self selector:@selector(scroll) userInfo:nil repeats:NO];
+		[NSTimer scheduledTimerWithTimeInterval:_pauseInterval target:self selector:@selector(scroll) userInfo:nil repeats:NO];
 	}
 } 
 #endif
@@ -93,7 +91,7 @@
 	}
 	isScrolling = YES;
 	
-	if (scrollDirection == AUTOSCROLL_SCROLL_LEFT){
+	if (_scrollDirection == AUTOSCROLL_SCROLL_LEFT){
 		self.contentOffset = CGPointMake(0,0);
 	}else{
 		self.contentOffset = CGPointMake(label[0].frame.size.width+LABEL_BUFFER_SPACE,0);
@@ -103,9 +101,9 @@
     [UIView setAnimationDelegate:self];
 	[UIView setAnimationCurve:UIViewAnimationCurveLinear];
 	[UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-	[UIView setAnimationDuration:label[0].frame.size.width/(float)scrollSpeed];
+	[UIView setAnimationDuration:label[0].frame.size.width/(float)_scrollSpeed];
 	
-	if (scrollDirection == AUTOSCROLL_SCROLL_LEFT){
+	if (_scrollDirection == AUTOSCROLL_SCROLL_LEFT){
 		self.contentOffset = CGPointMake(label[0].frame.size.width+LABEL_BUFFER_SPACE,0);
 	}else{
 		self.contentOffset = CGPointMake(0,0);
@@ -216,24 +214,24 @@
 
 - (void) setScrollSpeed: (float)speed
 {
-	scrollSpeed = speed;
+	_scrollSpeed = speed;
 	[self readjustLabels];
 }
 
 - (float) scrollSpeed
 {
-	return scrollSpeed;
+	return _scrollSpeed;
 }
 
 - (void) setScrollDirection: (enum AutoScrollDirection)direction
 {
-	scrollDirection = direction;
+	_scrollDirection = direction;
 	[self readjustLabels];
 }
 
 - (enum AutoScrollDirection) scrollDirection
 {
-	return scrollDirection;
+	return _scrollDirection;
 }
 
 /*
