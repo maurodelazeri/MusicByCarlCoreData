@@ -33,10 +33,6 @@
 
 @implementation AppDelegate
 
-@synthesize audioPlaybackPtr = _audioPlaybackPtr;
-@synthesize userPreferencesPtr = _userPreferencesPtr;
-@synthesize currentSongsInfoPtr = _currentSongsInfoPtr;
-
 - (GlobalVars *)globalVarsPtr {
     if (!_globalVarsPtr) {
         _globalVarsPtr = [GlobalVars sharedGlobalVars];
