@@ -23,10 +23,10 @@ enum AutoScrollDirection {
 
 @interface AutoScrollLabel : UIScrollView <UIScrollViewDelegate>{
 	UILabel *label[NUM_LABELS];
-	enum AutoScrollDirection scrollDirection;
-	float scrollSpeed;
-	NSTimeInterval pauseInterval;
-	int bufferSpaceBetweenLabels;
+	enum AutoScrollDirection _scrollDirection;
+	float _scrollSpeed;
+	NSTimeInterval _pauseInterval;
+	int _bufferSpaceBetweenLabels;
 	bool isScrolling;
 }
 @property(nonatomic) enum AutoScrollDirection scrollDirection;
