@@ -17,13 +17,6 @@
 
 @implementation FetchedTableViewController
 
-@synthesize tableView = _tableView;
-
-@synthesize mySearchBar = _mySearchBar;
-@synthesize searchBarShown = _searchBarShown;
-@synthesize searchBarText = _searchBarText;
-@synthesize fetchedResultsController = _fetchedResultsController;
-
 - (id)initWithTableView: (UITableView *)tableView
 {
     if (self)
