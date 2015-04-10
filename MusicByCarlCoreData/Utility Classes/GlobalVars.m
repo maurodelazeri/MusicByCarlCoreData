@@ -12,8 +12,6 @@
 
 @implementation GlobalVars
 
-@synthesize currentAlbum = _currentAlbum;
-
 // This class method initializes the static singleton pointer
 // if necessary, and returns the singleton pointer to the caller
 + (GlobalVars *)sharedGlobalVars
