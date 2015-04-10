@@ -32,13 +32,6 @@ static AudioPlayback *refToSelf;
 
 @implementation AudioPlayback
 
-@synthesize currentSongsInfo = _currentSongsInfo;
-@synthesize songsPtr = _songsPtr;
-@synthesize avPlayer = _avPlayer;
-@synthesize channelZeroPeak = _channelZeroPeak;
-@synthesize channelOnePeak = _channelOnePeak;
-@synthesize lastPlayedAlert = _lastPlayedAlert;
-
 - (NSString *)description
 {
     NSString *returnValue = @"\n----- AudioPlayback -----";
@@ -745,8 +738,8 @@ static AudioPlayback *refToSelf;
     
     [currentSong updateLastPlayedTime:[NSDate date] withDatabasePtr:databaseInterfacePtr];
 
-    [self logFinalPeakPower:self.channelZeroPeak forChannel:@"zero"];
-    [self logFinalPeakPower:self.channelOnePeak forChannel:@"one"];
+    //[self logFinalPeakPower:self.channelZeroPeak forChannel:@"zero"];
+    //[self logFinalPeakPower:self.channelOnePeak forChannel:@"one"];
 
     [self playNextSong:[self.currentSongsInfo retrieveCurrentSongIndex]];
 }
