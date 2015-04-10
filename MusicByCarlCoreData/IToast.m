@@ -12,8 +12,6 @@
 
 @implementation IToast
 
-@synthesize completionHandler = _completionHandler;
-
 - (void)showToast: (NSString *)alertTitle withMessage: (NSString *)alertMessage forDuration: (NSTimeInterval)duration withCompletionHandler: (void(^)(void))completionHandler
 {
     self.completionHandler = completionHandler;
