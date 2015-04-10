@@ -22,8 +22,6 @@
 
 @implementation EmailLogViewController
 
-@synthesize composeViewController = _composeViewController;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
