@@ -22,14 +22,6 @@
 
 @implementation DatabaseManager
 
-@synthesize operationQueue = _operationQueue;
-@synthesize storeCoordinator = _storeCoordinator;
-@synthesize mainContext = _mainContext;
-@synthesize modelURL = _modelURL;
-@synthesize storeURL = _storeURL;
-@synthesize model = _model;
-@synthesize databaseBuildInProgress = _databaseBuildInProgress;
-
 - (NSOperationQueue *)operationQueue
 {
     if (!_operationQueue)
