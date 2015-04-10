@@ -19,14 +19,6 @@
 
 @implementation AllGenresViewController
 
-@synthesize tableView = _tableView;
-@synthesize genresPtr = _genresPtr;
-
-@synthesize sectionTitles = _sectionTitles;
-@synthesize sectionIndexTitles = _sectionIndexTitles;
-
-@synthesize fetchedResultsController = _fetchedResultsController;
-
 - (Genres *)genresPtr
 {
     if (!_genresPtr)
