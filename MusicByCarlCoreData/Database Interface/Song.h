@@ -15,7 +15,6 @@
 @interface Song : NSManagedObject
 
 @property (nonatomic, retain) NSString * albumArtist;
-//@property (nonatomic, retain) NSData * albumArtwork;
 @property (nonatomic, retain) NSNumber * albumPersistentID;
 @property (nonatomic, retain) NSString * albumTitle;
 @property (nonatomic, retain) NSString * artist;
