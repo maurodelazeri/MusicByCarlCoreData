@@ -36,9 +36,6 @@
 
 @implementation CoverFlowViewController
 
-@synthesize databaseManagerPtr = _databaseManagerPtr;
-@synthesize imageToOperationDictionary = _imageToOperationDictionary;
-
 - (DatabaseManager *)databaseManagerPtr {
     if (!_databaseManagerPtr) {
         _databaseManagerPtr = [[DatabaseManager alloc] init];
