@@ -35,26 +35,6 @@
 
 @implementation NowPlayingViewController
 
-@synthesize scrollingArtistLabel = _scrollingArtistLabel;
-@synthesize scrollingTitleLabel = _scrollingTitleLabel;
-@synthesize scrollingAlbumTitleLabel = _scrollingAlbumTitleLabel;
-@synthesize artworkImageView = _artworkImageView;
-@synthesize volumeViewParentView = _volumeViewParentView;
-@synthesize trackTimePercentageSlider = _trackTimePercentageSlider;
-@synthesize trackTimeElapsedLabel = _trackTimeElapsedLabel;
-@synthesize trackTimeRemainingLabel = _trackTimeRemainingLabel;
-@synthesize currentTrackOfTotalTracksLabel = _currentTrackOfTotalTracksLabel;
-@synthesize volumeSlider = _volumeSlider;
-
-@synthesize audioPlaybackPtr = _audioPlaybackPtr;
-@synthesize userPreferencesPtr = _userPreferencesPtr;
-@synthesize currentSongsInfo = _currentSongsInfo;
-
-@synthesize startNewAudio = _startNewAudio;
-@synthesize shuffleAllFlag = _shuffleAllFlag;
-@synthesize newSongList = _newSongList;
-@synthesize nowPlayingSegue = _nowPlayingSegue;
-
 - (void)encodeRestorableStateWithCoder:(NSCoder *)coder
 {
     [coder encodeFloat:self.volumeSlider.value forKey:@"volumeLevel"];
