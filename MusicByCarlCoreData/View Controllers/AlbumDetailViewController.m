@@ -29,9 +29,6 @@
 
 @implementation AlbumDetailViewController
 
-@synthesize tableView = _tableView;
-@synthesize albumInternalIDs = _albumInternalIDs;
-
 - (DatabaseInterface *)lazyDatabaseInterfacePtr
 {
     if (!databaseInterfacePtr)
