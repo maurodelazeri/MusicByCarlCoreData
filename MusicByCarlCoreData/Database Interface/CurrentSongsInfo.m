@@ -15,15 +15,6 @@
 
 @implementation CurrentSongsInfo
 
-@synthesize currentSongIndex = _currentSongIndex;
-@synthesize currentSongsList = _currentSongsList;
-@synthesize songsOlderThanFourteenDays = _songsOlderThanFourteenDays;
-@synthesize songsOlderThanSevenDays = _songsOlderThanSevenDays;
-@synthesize songsOlderThanThirtyDays =  _songsOlderThanThirtyDays;
-@synthesize songsOlderThanTwentyOneDays = _songsOlderThanTwentyOneDays;
-@synthesize songsNeverPlayed = _songsNeverPlayed;
-@synthesize songsPtr = _songsPtr;
-
 // This class method initializes the static singleton pointer
 // if necessary, and returns the singleton pointer to the caller
 + (CurrentSongsInfo *)sharedCurrentSongsInfo
