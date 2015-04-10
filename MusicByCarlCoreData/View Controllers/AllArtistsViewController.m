@@ -18,15 +18,6 @@
 
 @implementation AllArtistsViewController
 
-@synthesize tableView = _tableView;
-@synthesize fetchedResultsController = _fetchedResultsController;
-
-@synthesize artistsPtr = _artistsPtr;
-@synthesize sectionTitles = _sectionTitles;
-@synthesize sectionIndexTitles = _sectionIndexTitles;
-
-@synthesize showAllButton = _showAllButton;
-
 - (void)createNewFetchedResultsController
 {
     self.fetchedResultsController = nil;
