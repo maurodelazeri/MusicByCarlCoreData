@@ -21,10 +21,6 @@
 
 @implementation UserPreferences
 
-@synthesize shuffleFlag = _shuffleFlag;
-@synthesize instrumentalAlbums = _instrumentalAlbums;
-@synthesize volumeLevel = _volumeLevel;
-
 // This class method initializes the static singleton pointer
 // if necessary, and returns the singleton pointer to the caller
 + (UserPreferences *)sharedUserPreferences
