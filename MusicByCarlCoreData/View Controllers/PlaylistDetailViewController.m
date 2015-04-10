@@ -20,16 +20,6 @@
 
 @synthesize tableView = _tableView;
 
-@synthesize playlist = _playlist;
-@synthesize playlistsPtr = _playlistsPtr;
-@synthesize playlistInternalID = _playlistInternalID;
-
-@synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize sectionTitles = _sectionTitles;
-@synthesize sectionIndexTitles = _sectionIndexTitles;
-
-@synthesize songCountLabel = _songCountLabel;
-
 - (Playlists *)playlistsPtr
 {
     if (!_playlistsPtr)
