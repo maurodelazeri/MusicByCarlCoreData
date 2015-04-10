@@ -15,9 +15,6 @@
 
 const double secondsInADay = 60.0 * 60.0 * 24.0;
 
-@interface Utilities ()
-@end
-
 @implementation Utilities
 
 // This class method initializes the static singleton pointer
