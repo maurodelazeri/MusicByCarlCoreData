@@ -26,12 +26,6 @@
 @implementation AllAlbumsViewController
 
 @synthesize tableView = _tableView;
-@synthesize albumTypeButton = _albumTypeButton;
-@synthesize sectionTitles = _sectionTitles;
-@synthesize sectionIndexTitles = _sectionIndexTitles;
-
-@synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize instrumentalAlbumsFlag = _instrumentalAlbumsFlag;
 
 - (id)init
 {
