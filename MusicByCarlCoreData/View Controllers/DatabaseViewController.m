@@ -36,12 +36,6 @@
 
 @implementation DatabaseViewController
 
-@synthesize scrollView = _scrollView;
-@synthesize buildAllButton = _buildAllButton;
-
-@synthesize progressView = _progressView;
-@synthesize progressViewLabel = _progressViewLabel;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
