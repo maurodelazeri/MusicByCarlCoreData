@@ -28,13 +28,7 @@
 
 @implementation AllSongsViewController
 
-@synthesize audioPlaybackPtr = _audioPlaybackPtr;
 @synthesize tableView = _tableView;
-
-@synthesize fetchedResultsController = _fetchedResultsController;
-
-@synthesize sectionTitles = _sectionTitles;
-@synthesize sectionIndexTitles = _sectionIndexTitles;
 
 - (AudioPlayback *)audioPlaybackPtr
 {
