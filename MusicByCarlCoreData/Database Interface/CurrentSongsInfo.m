@@ -7,7 +7,6 @@
 //
 
 #import "CurrentSongsInfo.h"
-#import "CurrentSongsInfoArchive.h"
 #import "MillisecondTimer.h"
 
 #import "Utilities.h"
@@ -22,21 +21,9 @@
     static dispatch_once_t pred = 0;
     __strong static CurrentSongsInfo *_sharedObject = nil;
     dispatch_once(&pred, ^{
-        _sharedObject = [[CurrentSongsInfo alloc] init];
+        _sharedObject = [self loadInstance];
     });
     return _sharedObject;
-}
-
-- (id)init
-{
-    self = [super init];
-    
-    if (self)
-    {
-        [self unarchiveData];
-    }
-    
-    return self;
 }
 
 - (Songs *)songsPtr
@@ -47,37 +34,6 @@
     }
     
     return _songsPtr;
-}
-
-- (NSString *)description {
-    NSString *returnValue = [NSString stringWithFormat:@"\ncurrentSongIndex = %ld", (long)[self.currentSongIndex integerValue]];
-    returnValue = [returnValue stringByAppendingFormat:@"\ncurrentSongsList.count = %lu", (unsigned long)self.currentSongsList.count];
-    returnValue = [returnValue stringByAppendingFormat:@"\nsongsNeverPlayed.counts = %lu", (unsigned long)self.songsNeverPlayed.count];
-    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanThirtyDays.count = %lu", (unsigned long)self.songsOlderThanThirtyDays.count];
-    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanTwentyOneDays.count = %lu", (unsigned long)self.songsOlderThanTwentyOneDays.count];
-    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanFourteenDays.count = %lu", (unsigned long)self.songsOlderThanFourteenDays.count];
-    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanSevenDays.count = %lu", (unsigned long)self.songsOlderThanSevenDays.count];
-    
-    return returnValue;
-}
-
-- (void)unarchiveData
-{
-    NSMutableDictionary *unarchivedDictionary = [CurrentSongsInfoArchive unarchiveCurrentSongsInfo];
-    if (unarchivedDictionary != nil) {
-        _currentSongIndex = [unarchivedDictionary objectForKey:@"archivedCurrentSongIndex"];
-        _currentSongsList = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedCurrentSongsList"]];
-        _songsNeverPlayed = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedSongsNeverPlayed"]];
-        _songsOlderThanThirtyDays = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedSongsOlderThanThirtyDays"]];
-        _songsOlderThanTwentyOneDays = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedSongsOlderThanTwentyOneDays"]];
-        _songsOlderThanFourteenDays = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedSongsOlderThanFourteenDays"]];
-        _songsOlderThanSevenDays = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedSongsOlderThanSevenDays"]];
-    }
-}
-
-- (void)archiveData
-{
-    [CurrentSongsInfoArchive archiveCurrentSongsInfo:self];
 }
 
 - (NSMutableOrderedSet *)currentSongsList {
@@ -128,6 +84,76 @@
     return _songsOlderThanSevenDays;
 }
 
+- (NSString *)description {
+    NSString *returnValue = [NSString stringWithFormat:@"\ncurrentSongIndex = %ld", (long)[self.currentSongIndex integerValue]];
+    returnValue = [returnValue stringByAppendingFormat:@"\ncurrentSongsList.count = %lu", (unsigned long)self.currentSongsList.count];
+    returnValue = [returnValue stringByAppendingFormat:@"\nsongsNeverPlayed.counts = %lu", (unsigned long)self.songsNeverPlayed.count];
+    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanThirtyDays.count = %lu", (unsigned long)self.songsOlderThanThirtyDays.count];
+    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanTwentyOneDays.count = %lu", (unsigned long)self.songsOlderThanTwentyOneDays.count];
+    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanFourteenDays.count = %lu", (unsigned long)self.songsOlderThanFourteenDays.count];
+    returnValue = [returnValue stringByAppendingFormat:@"\nsongsOlderThanSevenDays.count = %lu", (unsigned long)self.songsOlderThanSevenDays.count];
+    
+    return returnValue;
+}
+
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.currentSongIndex forKey:@"currentSongIndex"];
+    [encoder encodeObject:self.currentSongsList forKey:@"currentSongsList"];
+    [encoder encodeObject:self.songsNeverPlayed forKey:@"songsNeverPlayed"];
+    [encoder encodeObject:self.songsOlderThanThirtyDays forKey:@"songsOlderThanThirtyDays"];
+    [encoder encodeObject:self.songsOlderThanTwentyOneDays forKey:@"songsOlderThanTwentyOneDays"];
+    [encoder encodeObject:self.songsOlderThanFourteenDays forKey:@"songsOlderThanFourteenDays"];
+    [encoder encodeObject:self.songsOlderThanSevenDays forKey:@"songsOlderThanSevenDays"];
+}
+
+- (id)initWithCoder:(NSCoder *)decoder
+{
+    self = [self init];
+    
+    if (self)
+    {
+        _currentSongIndex = [decoder decodeObjectForKey:@"currentSongIndex"];
+        _currentSongsList = [decoder decodeObjectForKey:@"currentSongsList"];
+        _songsNeverPlayed = [decoder decodeObjectForKey:@"songsNeverPlayed"];
+        _songsOlderThanThirtyDays = [decoder decodeObjectForKey:@"songsOlderThanThirtyDays"];
+        _songsOlderThanTwentyOneDays = [decoder decodeObjectForKey:@"songsOlderThanTwentyOneDays"];
+        _songsOlderThanFourteenDays = [decoder decodeObjectForKey:@"songsOlderThanFourteenDays"];
+        _songsOlderThanSevenDays = [decoder decodeObjectForKey:@"songsOlderThanSevenDays"];
+    }
+    else
+    {
+        _currentSongIndex = [NSNumber numberWithInt:-1];
+        _currentSongsList = nil;
+        _songsNeverPlayed = nil;
+        _songsOlderThanThirtyDays = nil;
+        _songsOlderThanTwentyOneDays = nil;
+        _songsOlderThanFourteenDays = nil;
+        _songsOlderThanSevenDays = nil;
+    }
+    
+    return self;
+}
+
+- (void)archiveData
+{
+    NSString *archivePath = [Utilities currentSongsInfoArchiveFilePath];
+    [NSKeyedArchiver archiveRootObject:self toFile:archivePath];
+}
+
++(instancetype)loadInstance
+{
+    NSString *archivePath = [Utilities currentSongsInfoArchiveFilePath];
+    NSData *decodedData = [NSData dataWithContentsOfFile:archivePath];
+    if (decodedData)
+    {
+        CurrentSongsInfo *currentSongsInfoData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        return currentSongsInfoData;
+    }
+    
+    return [[CurrentSongsInfo alloc] init];
+}
+
 - (NSInteger)retrieveCurrentSongIndex {
     return [self.currentSongIndex integerValue];
 }
@@ -145,7 +171,12 @@
 }
 
 - (NSNumber *)currentSongListObjectAtIndex: (NSInteger)songIndex {
-    return [self.currentSongsList objectAtIndex:songIndex];
+    if (self.currentSongsList.count > 0) {
+        return [self.currentSongsList objectAtIndex:songIndex];
+    }
+    else {
+        return nil;
+    }
 }
 
 - (void)addCurrentSongListSong:(NSNumber *)songInternalId {
