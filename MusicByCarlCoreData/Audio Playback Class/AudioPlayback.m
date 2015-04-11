@@ -94,6 +94,8 @@ static AudioPlayback *refToSelf;
 
 - (void)initAVSession
 {
+    //[Logger writeToLogFile:[NSString stringWithFormat:@"%s called", __PRETTY_FUNCTION__]];
+    
     _audioSessionPtr = (AVAudioSession *)[AVAudioSession sharedInstance];
 
     NSError *error;
@@ -135,12 +137,12 @@ static AudioPlayback *refToSelf;
 
 - (void)mediaServicesReset: (NSNotification *)notification
 {
-    NSLog(@"%s called with notification = %@", __PRETTY_FUNCTION__, notification);
+    [Logger writeToLogFile:[NSString stringWithFormat:@"%s called with notification = %@", __PRETTY_FUNCTION__, notification]];
 }
 
 - (void)audioInterrupted: (NSNotification *)notification
 {
-    NSLog(@"%s called with notification = %@", __PRETTY_FUNCTION__, notification);
+    [Logger writeToLogFile:[NSString stringWithFormat:@"%s called with notification = %@", __PRETTY_FUNCTION__, notification]];
 }
 
 - (void)routeChanged: (NSNotification *)notification
@@ -329,7 +331,10 @@ static AudioPlayback *refToSelf;
 
 - (void)playAudio
 {
-    [self.avPlayer play];
+    if (![self.avPlayer play])
+    {
+        [Logger writeToLogFile:[NSString stringWithFormat:@"Error: avPlayer play returned NO"]];
+    }
 }
 
 - (void)pauseAudio
@@ -615,6 +620,8 @@ static AudioPlayback *refToSelf;
 {
     NSURL *currentSongAssetURL = [NSKeyedUnarchiver unarchiveObjectWithData:currentSong.assetURL];
     [self playSongWithURL:currentSongAssetURL];
+    
+    [AppDelegate archiveAppData];
 }
 
 - (void)loadSongAudio: (Song *)currentSong
