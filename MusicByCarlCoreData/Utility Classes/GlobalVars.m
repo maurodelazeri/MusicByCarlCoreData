@@ -19,42 +19,24 @@
     static dispatch_once_t pred = 0;
     __strong static GlobalVars *_sharedObject = nil;
     dispatch_once(&pred, ^{
-        _sharedObject = [[GlobalVars alloc] init];
+        _sharedObject = [self loadInstance];
     });
     return _sharedObject;
 }
 
-- (id)init
-{
-    self = [super init];
-    if (self)
-    {
-        NSString *archivePath = [Utilities globalVarsArchiveFilePath];
-        GlobalVars *archivedObject = [NSKeyedUnarchiver unarchiveObjectWithFile:archivePath];
-        
-        if (archivedObject == nil)
-        {
-            _currentAlbum = [NSNumber numberWithInteger:-1];
-            _currentSong = [NSNumber numberWithInteger:-1];
-        }
-        else
-        {
-            _currentAlbum = archivedObject.currentAlbum;
-            _currentSong = archivedObject.currentSong;
-        }
-    }
-    
-    return self;
-}
-
 - (id)initWithCoder:(NSCoder *)decoder
 {
-    self = [super init];
+    self = [self init];
     
     if (self)
     {
         _currentAlbum = [decoder decodeObjectForKey:@"currentAlbum"];
         _currentSong = [decoder decodeObjectForKey:@"currentSong"];
+    }
+    else
+    {
+        _currentAlbum = [NSNumber numberWithInteger:-1];
+        _currentSong = [NSNumber numberWithInteger:-1];
     }
     
     return self;
@@ -65,10 +47,24 @@
     [encoder encodeObject:self.currentAlbum forKey:@"currentAlbum"];
     [encoder encodeObject:self.currentSong forKey:@"currentSong"];
 }
+
 - (void)archiveData
 {
     NSString *archivePath = [Utilities globalVarsArchiveFilePath];
     [NSKeyedArchiver archiveRootObject:self toFile:archivePath];
+}
+
++(instancetype)loadInstance
+{
+    NSString *archivePath = [Utilities globalVarsArchiveFilePath];
+    NSData *decodedData = [NSData dataWithContentsOfFile:archivePath];
+    if (decodedData)
+    {
+        GlobalVars *globalVarsData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        return globalVarsData;
+    }
+    
+    return [[GlobalVars alloc] init];
 }
 
 @end
