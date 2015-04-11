@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface GlobalVars : NSObject
+@interface GlobalVars : NSObject <NSCoding>
 
 @property (nonatomic) NSNumber *currentAlbum;
 @property (nonatomic) NSNumber *currentSong;
