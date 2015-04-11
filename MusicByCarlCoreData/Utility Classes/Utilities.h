@@ -21,6 +21,8 @@ extern const double secondsInADay;
 + (NSString *)songsArchiveFilePath;
 + (NSString *)userPreferencesArchiveFilePath;
 + (NSString *)globalVarsArchiveFilePath;
++ (NSString *)currentSongsInfoArchiveFilePath;
++ (NSString *)loggerArchiveFilePath;
 
 + (uint64_t) getTickCount;
 
