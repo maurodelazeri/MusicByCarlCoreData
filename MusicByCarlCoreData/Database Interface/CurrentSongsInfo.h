@@ -11,7 +11,7 @@
 
 #import "Songs.h"
 
-@interface CurrentSongsInfo : NSObject
+@interface CurrentSongsInfo : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSNumber * currentSongIndex;
 @property (nonatomic, strong) NSMutableOrderedSet *currentSongsList;
