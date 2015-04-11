@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserPreferences : NSObject
+@interface UserPreferences : NSObject <NSCoding>
 
 // Singleton pointer given to other classes who access the UserPreferences class
 + (UserPreferences *)sharedUserPreferences;
