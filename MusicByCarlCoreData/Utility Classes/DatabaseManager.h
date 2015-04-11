@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@interface DatabaseManager : NSObject // <NSCoding>
+@interface DatabaseManager : NSObject
 
 @property (strong, nonatomic, readonly) NSOperationQueue *operationQueue;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator *storeCoordinator;
