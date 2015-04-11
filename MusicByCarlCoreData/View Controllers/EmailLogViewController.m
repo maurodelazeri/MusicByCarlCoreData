@@ -49,7 +49,8 @@
 {
     [super viewDidDisappear:animated];
     
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MusicByCarlCoreData.exitEmailLogScreenNotification" object:nil];
+    // TODO: Add logic to remove the observer after the Mail Compose View Controller is dismissed
+    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"MusicByCarlCoreData.exitEmailLogScreenNotification" object:nil];
 }
 
 - (void)didReceiveMemoryWarning
