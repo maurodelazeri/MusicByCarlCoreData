@@ -125,7 +125,7 @@
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
-    [self archiveAppData];
+    [AppDelegate archiveAppData];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -219,12 +219,14 @@
 
 #pragma mark - App State Preservation and Restoration
 
-- (void)archiveAppData
++ (void)archiveAppData
 {
-    [self.globalVarsPtr archiveData];
-    [self.userPreferencesPtr archiveData];
-    [self.currentSongsInfoPtr archiveData];
-    [self.loggerPtr archiveData];
+    [Logger writeToLogFile:[NSString stringWithFormat:@"%s called", __PRETTY_FUNCTION__]];
+    
+    [[CurrentSongsInfo sharedCurrentSongsInfo] archiveData];
+    [[GlobalVars sharedGlobalVars] archiveData];
+    [[Logger sharedLogger] archiveData];
+    [[UserPreferences sharedUserPreferences] archiveData];
 }
 
 - (BOOL)application:(UIApplication *)application shouldSaveApplicationState:(NSCoder *)coder
