@@ -40,20 +40,17 @@
 		6735DA2E1952518B0087CBDD /* Artist.m in Sources */ = {isa = PBXBuildFile; fileRef = 6735DA2D1952518B0087CBDD /* Artist.m */; };
 		673AD186194D2EDC0003DC9A /* MoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 673AD185194D2EDC0003DC9A /* MoreViewController.m */; };
 		673B6B1B17CC2C7E00C10AC5 /* AlbumTrackDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 673B6B1A17CC2C7E00C10AC5 /* AlbumTrackDetailCell.m */; };
-		673E8E0619E74A8C00E501F8 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 673E8E0419E74A8C00E501F8 /* dsym_upload.sh */; };
-		673E8E0719E74A8C00E501F8 /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 673E8E0519E74A8C00E501F8 /* libCrittercism_v4_3_7.a */; };
 		6744703B197B497100380615 /* Email-log-tab-bar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67447039197B497100380615 /* Email-log-tab-bar-icon.png */; };
 		6744703C197B497100380615 /* Email-log-tab-bar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6744703A197B497100380615 /* Email-log-tab-bar-icon@2x.png */; };
 		6745CA051879CD1E00C1D2AA /* CoreDataRecord-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 6745CA041879CD1E00C1D2AA /* CoreDataRecord-120.png */; };
 		6749D78A1868B360001D3F49 /* VinylRecord-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 6749D7891868B360001D3F49 /* VinylRecord-120.png */; };
 		675D19C217A5949E00BA5FFF /* AllAlbumsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 675D19C117A5949E00BA5FFF /* AllAlbumsViewController.m */; };
 		675D19C517A5952700BA5FFF /* Albums.m in Sources */ = {isa = PBXBuildFile; fileRef = 675D19C417A5952700BA5FFF /* Albums.m */; };
+		6762633C1AD864A400305461 /* dsym_upload.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6762633A1AD864A400305461 /* dsym_upload.sh */; };
+		6762633D1AD864A400305461 /* libCrittercism_v4_3_7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6762633B1AD864A400305461 /* libCrittercism_v4_3_7.a */; };
 		6772093A1978ABDA002E708C /* FetchedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 677209391978ABDA002E708C /* FetchedTableViewController.m */; };
 		6774D32A17A60F0A00BF8E35 /* AutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6774D32917A60F0A00BF8E35 /* AutoScrollLabel.m */; };
 		6774D32D17A60F7000BF8E35 /* NowPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6774D32C17A60F7000BF8E35 /* NowPlayingViewController.m */; };
-		677D34341A816F9B00821D95 /* CurrentSongsInfoArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 677D34331A816F9B00821D95 /* CurrentSongsInfoArchive.m */; };
-		6780A66B19CC70FB00E79D56 /* UserPreferencesArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6780A66A19CC70FB00E79D56 /* UserPreferencesArchive.m */; };
-		6780A67119CC70FC00E79D56 /* LoggerArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 6780A67019CC70FC00E79D56 /* LoggerArchive.m */; };
 		6785E50717D1AF0D0033AC7F /* AllArtistsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6785E50617D1AF0D0033AC7F /* AllArtistsViewController.m */; };
 		678B069417DC233F00C5BD44 /* Genres-tab-bar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 678B069217DC233F00C5BD44 /* Genres-tab-bar-icon.png */; };
 		678B069517DC233F00C5BD44 /* Genres-tab-bar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 678B069317DC233F00C5BD44 /* Genres-tab-bar-icon@2x.png */; };
@@ -192,11 +189,6 @@
 		673AD185194D2EDC0003DC9A /* MoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MoreViewController.m; path = "View Controllers/MoreViewController.m"; sourceTree = "<group>"; };
 		673B6B1917CC2C7E00C10AC5 /* AlbumTrackDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlbumTrackDetailCell.h; path = "Table Cells/AlbumTrackDetailCell.h"; sourceTree = "<group>"; };
 		673B6B1A17CC2C7E00C10AC5 /* AlbumTrackDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlbumTrackDetailCell.m; path = "Table Cells/AlbumTrackDetailCell.m"; sourceTree = "<group>"; };
-		673E8E0119E74A8C00E501F8 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
-		673E8E0219E74A8C00E501F8 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
-		673E8E0319E74A8C00E501F8 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
-		673E8E0419E74A8C00E501F8 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
-		673E8E0519E74A8C00E501F8 /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
 		673F50D119CB706C002EB36C /* MusicByCarl 1.7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.7.xcdatamodel"; sourceTree = "<group>"; };
 		67447039197B497100380615 /* Email-log-tab-bar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-log-tab-bar-icon.png"; path = "Images/Email-log-tab-bar-icon.png"; sourceTree = "<group>"; };
 		6744703A197B497100380615 /* Email-log-tab-bar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Email-log-tab-bar-icon@2x.png"; path = "Images/Email-log-tab-bar-icon@2x.png"; sourceTree = "<group>"; };
@@ -206,6 +198,11 @@
 		675D19C117A5949E00BA5FFF /* AllAlbumsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllAlbumsViewController.m; path = "View Controllers/AllAlbumsViewController.m"; sourceTree = "<group>"; };
 		675D19C317A5952700BA5FFF /* Albums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Albums.h; path = "Media Item Classes/Albums.h"; sourceTree = "<group>"; };
 		675D19C417A5952700BA5FFF /* Albums.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Albums.m; path = "Media Item Classes/Albums.m"; sourceTree = "<group>"; };
+		676263371AD864A400305461 /* CRFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRFilter.h; sourceTree = "<group>"; };
+		676263381AD864A400305461 /* Crittercism.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Crittercism.h; sourceTree = "<group>"; };
+		676263391AD864A400305461 /* CrittercismDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrittercismDelegate.h; sourceTree = "<group>"; };
+		6762633A1AD864A400305461 /* dsym_upload.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = dsym_upload.sh; sourceTree = "<group>"; };
+		6762633B1AD864A400305461 /* libCrittercism_v4_3_7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v4_3_7.a; sourceTree = "<group>"; };
 		676CB990190C723C00FA5E46 /* MusicByCarl 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		677209381978ABDA002E708C /* FetchedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchedTableViewController.h; path = "View Controllers/FetchedTableViewController.h"; sourceTree = "<group>"; };
 		677209391978ABDA002E708C /* FetchedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchedTableViewController.m; path = "View Controllers/FetchedTableViewController.m"; sourceTree = "<group>"; };
@@ -214,13 +211,7 @@
 		6774D32B17A60F7000BF8E35 /* NowPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NowPlayingViewController.h; path = "View Controllers/NowPlayingViewController.h"; sourceTree = "<group>"; };
 		6774D32C17A60F7000BF8E35 /* NowPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NowPlayingViewController.m; path = "View Controllers/NowPlayingViewController.m"; sourceTree = "<group>"; };
 		677D34311A816D7400821D95 /* MusicByCarl 1.16.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.16.xcdatamodel"; sourceTree = "<group>"; };
-		677D34321A816F9B00821D95 /* CurrentSongsInfoArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CurrentSongsInfoArchive.h; path = "Database Interface/CurrentSongsInfoArchive.h"; sourceTree = "<group>"; };
-		677D34331A816F9B00821D95 /* CurrentSongsInfoArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CurrentSongsInfoArchive.m; path = "Database Interface/CurrentSongsInfoArchive.m"; sourceTree = "<group>"; };
 		6780A66819CC6F9F00E79D56 /* MusicByCarl 1.14.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.14.xcdatamodel"; sourceTree = "<group>"; };
-		6780A66919CC70FB00E79D56 /* UserPreferencesArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserPreferencesArchive.h; path = "Database Interface/UserPreferencesArchive.h"; sourceTree = "<group>"; };
-		6780A66A19CC70FB00E79D56 /* UserPreferencesArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserPreferencesArchive.m; path = "Database Interface/UserPreferencesArchive.m"; sourceTree = "<group>"; };
-		6780A66F19CC70FC00E79D56 /* LoggerArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoggerArchive.h; path = "Database Interface/LoggerArchive.h"; sourceTree = "<group>"; };
-		6780A67019CC70FC00E79D56 /* LoggerArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoggerArchive.m; path = "Database Interface/LoggerArchive.m"; sourceTree = "<group>"; };
 		6785E50517D1AF0D0033AC7F /* AllArtistsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AllArtistsViewController.h; path = "View Controllers/AllArtistsViewController.h"; sourceTree = "<group>"; };
 		6785E50617D1AF0D0033AC7F /* AllArtistsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AllArtistsViewController.m; path = "View Controllers/AllArtistsViewController.m"; sourceTree = "<group>"; };
 		678B069217DC233F00C5BD44 /* Genres-tab-bar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Genres-tab-bar-icon.png"; path = "Images/Genres-tab-bar-icon.png"; sourceTree = "<group>"; };
@@ -231,6 +222,7 @@
 		678B069E17DC60BB00C5BD44 /* More-tab-bar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "More-tab-bar-icon.png"; path = "Images/More-tab-bar-icon.png"; sourceTree = "<group>"; };
 		678B069F17DC60BB00C5BD44 /* More-tab-bar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "More-tab-bar-icon@2x.png"; path = "Images/More-tab-bar-icon@2x.png"; sourceTree = "<group>"; };
 		678B06A517DC66B600C5BD44 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		67932BB41AD8E53D00A644C1 /* MusicByCarl 1.17.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.17.xcdatamodel"; sourceTree = "<group>"; };
 		6797975A1A2CDC7900574164 /* CoverFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverFlowLayout.h; sourceTree = "<group>"; };
 		6797975B1A2CDC7900574164 /* CoverFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverFlowLayout.m; sourceTree = "<group>"; };
 		679E135A18B4897900F205B9 /* MillisecondTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MillisecondTimer.h; path = "Utility Classes/MillisecondTimer.h"; sourceTree = "<group>"; };
@@ -329,7 +321,7 @@
 				67B5802317DD41D700E19FE8 /* AudioToolbox.framework in Frameworks */,
 				678B06A617DC66B600C5BD44 /* QuartzCore.framework in Frameworks */,
 				6703FC7C17A50E800058CCA0 /* AVFoundation.framework in Frameworks */,
-				673E8E0719E74A8C00E501F8 /* libCrittercism_v4_3_7.a in Frameworks */,
+				6762633D1AD864A400305461 /* libCrittercism_v4_3_7.a in Frameworks */,
 				6703FC5617A4AC530058CCA0 /* MediaPlayer.framework in Frameworks */,
 				6730140A17A4A359000A956E /* CoreData.framework in Frameworks */,
 				673013E717A4A2A1000A956E /* UIKit.framework in Frameworks */,
@@ -422,18 +414,12 @@
 				6735DA2D1952518B0087CBDD /* Artist.m */,
 				6717029A190C9A32008FE52E /* Album.h */,
 				6717029B190C9A32008FE52E /* Album.m */,
-				677D34321A816F9B00821D95 /* CurrentSongsInfoArchive.h */,
-				677D34331A816F9B00821D95 /* CurrentSongsInfoArchive.m */,
 				671B1E6A195227EC00AED18D /* Genre.h */,
 				671B1E6B195227EC00AED18D /* Genre.m */,
-				6780A66F19CC70FC00E79D56 /* LoggerArchive.h */,
-				6780A67019CC70FC00E79D56 /* LoggerArchive.m */,
 				67FEC58F17AE367B00A7AFAC /* Playlist.h */,
 				67FEC59017AE367B00A7AFAC /* Playlist.m */,
 				67F0886C190C778E0055BD89 /* Song.h */,
 				67F0886D190C778E0055BD89 /* Song.m */,
-				6780A66919CC70FB00E79D56 /* UserPreferencesArchive.h */,
-				6780A66A19CC70FB00E79D56 /* UserPreferencesArchive.m */,
 				6703FC6317A4DAD90058CCA0 /* DatabaseInterface.h */,
 				6703FC6417A4DAD90058CCA0 /* DatabaseInterface.m */,
 				67A781A3194BD31D0054B0E1 /* DatabaseManager.h */,
@@ -560,7 +546,8 @@
 		673013EC17A4A2A1000A956E /* MusicByCarlCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				673E8E0019E74A8C00E501F8 /* CrittercismSDK */,
+				676263361AD864A400305461 /* CrittercismSDK */,
+				67AF690019D4CD9C00F0943C /* Collection View Classes */,
 				6703FC7E17A5115D0058CCA0 /* Audio Playback Class */,
 				6703FC6217A4DA9C0058CCA0 /* Database Interface */,
 				6703FC7017A50A080058CCA0 /* Images */,
@@ -597,18 +584,17 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		673E8E0019E74A8C00E501F8 /* CrittercismSDK */ = {
+		676263361AD864A400305461 /* CrittercismSDK */ = {
 			isa = PBXGroup;
 			children = (
-				67AF690019D4CD9C00F0943C /* Collection View Classes */,
-				673E8E0119E74A8C00E501F8 /* CRFilter.h */,
-				673E8E0219E74A8C00E501F8 /* Crittercism.h */,
-				673E8E0319E74A8C00E501F8 /* CrittercismDelegate.h */,
-				673E8E0419E74A8C00E501F8 /* dsym_upload.sh */,
-				673E8E0519E74A8C00E501F8 /* libCrittercism_v4_3_7.a */,
+				676263371AD864A400305461 /* CRFilter.h */,
+				676263381AD864A400305461 /* Crittercism.h */,
+				676263391AD864A400305461 /* CrittercismDelegate.h */,
+				6762633A1AD864A400305461 /* dsym_upload.sh */,
+				6762633B1AD864A400305461 /* libCrittercism_v4_3_7.a */,
 			);
 			path = CrittercismSDK;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		67AF690019D4CD9C00F0943C /* Collection View Classes */ = {
 			isa = PBXGroup;
@@ -620,8 +606,7 @@
 				6797975A1A2CDC7900574164 /* CoverFlowLayout.h */,
 				6797975B1A2CDC7900574164 /* CoverFlowLayout.m */,
 			);
-			name = "Collection View Classes";
-			path = "../Collection View Classes";
+			path = "Collection View Classes";
 			sourceTree = "<group>";
 		};
 		67F1C4BD189F4EC60094360D /* Resources */ = {
@@ -725,7 +710,7 @@
 				67E049BD17D1B171006FBB4B /* Pause-icon.png in Resources */,
 				67E049BE17D1B171006FBB4B /* Pause-icon@2x.png in Resources */,
 				67E049BF17D1B171006FBB4B /* Play-icon.png in Resources */,
-				673E8E0619E74A8C00E501F8 /* dsym_upload.sh in Resources */,
+				6762633C1AD864A400305461 /* dsym_upload.sh in Resources */,
 				67E049C017D1B171006FBB4B /* Play-icon@2x.png in Resources */,
 				67E049C117D1B171006FBB4B /* Playlists-tab-bar-icon.png in Resources */,
 				67E049C217D1B171006FBB4B /* Playlists-tab-bar-icon@2x.png in Resources */,
@@ -796,7 +781,6 @@
 				673AD186194D2EDC0003DC9A /* MoreViewController.m in Sources */,
 				67F1C4BC189F4D730094360D /* UserPreferences.m in Sources */,
 				6772093A1978ABDA002E708C /* FetchedTableViewController.m in Sources */,
-				6780A67119CC70FC00E79D56 /* LoggerArchive.m in Sources */,
 				6717029C190C9A32008FE52E /* Album.m in Sources */,
 				6703FC8117A5118A0058CCA0 /* AudioPlayback.m in Sources */,
 				675D19C217A5949E00BA5FFF /* AllAlbumsViewController.m in Sources */,
@@ -806,9 +790,7 @@
 				67FEC58817AE2B1F00A7AFAC /* AllPlaylistsViewController.m in Sources */,
 				67FEC58E17AE32AB00A7AFAC /* Playlists.m in Sources */,
 				67FEC59117AE367B00A7AFAC /* Playlist.m in Sources */,
-				6780A66B19CC70FB00E79D56 /* UserPreferencesArchive.m in Sources */,
 				67004A6B17CB95D900676A3A /* AlbumDetailViewController.m in Sources */,
-				677D34341A816F9B00821D95 /* CurrentSongsInfoArchive.m in Sources */,
 				673B6B1B17CC2C7E00C10AC5 /* AlbumTrackDetailCell.m in Sources */,
 				672EA169197B50EF00305930 /* EmailLogViewController.m in Sources */,
 				6785E50717D1AF0D0033AC7F /* AllArtistsViewController.m in Sources */,
@@ -918,7 +900,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MusicByCarlCoreData/CrittercismSDK",
+					"$(PROJECT_DIR)/CrittercismSDK",
+					"$(PROJECT_DIR)/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -941,7 +924,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MusicByCarlCoreData/CrittercismSDK",
+					"$(PROJECT_DIR)/CrittercismSDK",
+					"$(PROJECT_DIR)/CrittercismSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -977,6 +961,7 @@
 			isa = XCVersionGroup;
 			children = (
 				677D34311A816D7400821D95 /* MusicByCarl 1.16.xcdatamodel */,
+				67932BB41AD8E53D00A644C1 /* MusicByCarl 1.17.xcdatamodel */,
 				6703031819CC3E2F001644A1 /* MusicByCarl 1.13.xcdatamodel */,
 				6780A66819CC6F9F00E79D56 /* MusicByCarl 1.14.xcdatamodel */,
 				67DBB31B1A0A210D002ABF25 /* MusicByCarl 1.15.xcdatamodel */,
@@ -994,7 +979,7 @@
 				671B1E6D195230CF00AED18D /* MusicByCarl 1.4.xcdatamodel */,
 				6730140C17A4A3B6000A956E /* MusicByCarl.xcdatamodel */,
 			);
-			currentVersion = 677D34311A816D7400821D95 /* MusicByCarl 1.16.xcdatamodel */;
+			currentVersion = 67932BB41AD8E53D00A644C1 /* MusicByCarl 1.17.xcdatamodel */;
 			path = MusicByCarl.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
