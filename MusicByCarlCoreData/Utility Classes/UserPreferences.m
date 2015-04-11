@@ -7,7 +7,6 @@
 //
 
 #import "UserPreferences.h"
-#import "UserPreferencesArchive.h"
 
 #import "Utilities.h"
 
@@ -28,36 +27,55 @@
     static dispatch_once_t pred = 0;
     __strong static UserPreferences *_sharedObject = nil;
     dispatch_once(&pred, ^{
-        _sharedObject = [[UserPreferences alloc] init];
+        _sharedObject = [self loadInstance];
     });
     return _sharedObject;
 }
 
-- (id)init
+- (id)initWithCoder:(NSCoder *)decoder
 {
-    self = [super init];
+    self = [self init];
     
     if (self)
     {
-        [self unarchiveData];
+        _shuffleFlag = [decoder decodeBoolForKey:@"shuffleFlag"];
+        _volumeLevel = [decoder decodeFloatForKey:@"volumeLevel"];
+        _instrumentalAlbums = [decoder decodeObjectForKey:@"instrumentalAlbums"];
+    }
+    else
+    {
+        _shuffleFlag = NO;
+        _volumeLevel = 1.0f;
+        _instrumentalAlbums = [[NSArray alloc] init];
     }
     
     return self;
 }
 
-- (void)unarchiveData
++ (instancetype)loadInstance
 {
-    NSMutableDictionary *unarchivedDictionary = [UserPreferencesArchive unarchiveUserPreferences];
-    if (unarchivedDictionary != nil) {
-        _shuffleFlag = [[unarchivedDictionary objectForKey:@"archivedShuffleFlag"] boolValue];
-        _volumeLevel = [[unarchivedDictionary objectForKey:@"archivedVolumeLevel"] floatValue];
-        _instrumentalAlbums = [NSKeyedUnarchiver unarchiveObjectWithData:[unarchivedDictionary objectForKey:@"archivedInstrumentalAlbums"]];
+    NSString *archivePath = [Utilities userPreferencesArchiveFilePath];
+    NSData *decodedData = [NSData dataWithContentsOfFile:archivePath];
+    if (decodedData)
+    {
+        UserPreferences *userPreferencesData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        return userPreferencesData;
     }
+    
+    return [[UserPreferences alloc] init];
 }
 
 - (void)archiveData
 {
-    [UserPreferencesArchive archiveUserPreferences:self];
+    NSString *archivePath = [Utilities userPreferencesArchiveFilePath];
+    [NSKeyedArchiver archiveRootObject:self toFile:archivePath];
+}
+
+
+- (void)encodeWithCoder:(NSCoder *)encoder {
+    [encoder encodeBool:self.shuffleFlag forKey:@"shuffleFlag"];
+    [encoder encodeFloat:self.volumeLevel forKey:@"volumeLevel"];
+    [encoder encodeObject:self.instrumentalAlbums forKey:@"instrumentalAlbums"];
 }
 
 - (void)readDefaultValues
