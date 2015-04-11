@@ -69,6 +69,14 @@ const double secondsInADay = 60.0 * 60.0 * 24.0;
     return archivePath;
 }
 
++ (NSString *)currentSongsInfoArchiveFilePath
+{
+    NSString *archivePath = [self documentsDirectoryPath];
+    archivePath = [archivePath stringByAppendingPathComponent:@"MusicByCarlCoreData.currentSongsInfoArchive"];
+    
+    return archivePath;
+}
+
 + (uint64_t) getTickCount
 {
     static mach_timebase_info_data_t sTimebaseInfo;
