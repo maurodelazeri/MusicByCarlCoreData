@@ -7,7 +7,6 @@
 //
 
 #import "Logger.h"
-#import "LoggerArchive.h"
 #import "Utilities.h"
 
 @implementation Logger
@@ -19,7 +18,7 @@
     static dispatch_once_t pred = 0;
     __strong static Logger *_sharedObject = nil;
     dispatch_once(&pred, ^{
-        _sharedObject = [[Logger alloc] init];
+        _sharedObject = [self loadInstance];
     });
     return _sharedObject;
 }
@@ -34,29 +33,44 @@
     return _logMessages;
 }
 
-- (id)init
+- (id)initWithCoder:(NSCoder *)decoder
 {
-    self = [super init];
+    self = [self init];
     
     if (self)
     {
-        [self unarchiveData];
+        _logMessages = [decoder decodeObjectForKey:@"logMessages"];
+    }
+    else
+    {
+        _logMessages = nil;
     }
     
     return self;
 }
 
-- (void)unarchiveData
+- (void)encodeWithCoder:(NSCoder *)encoder
 {
-    NSMutableArray *unarchivedLogMessages = [LoggerArchive unarchiveLogMessages];
-    if (unarchivedLogMessages != nil) {
-        _logMessages = unarchivedLogMessages;
-    }
+    [encoder encodeObject:self.logMessages forKey:@"logMessages"];
 }
 
 - (void)archiveData
 {
-    [LoggerArchive archiveLogMessages:self.logMessages];
+    NSString *archivePath = [Utilities loggerArchiveFilePath];
+    [NSKeyedArchiver archiveRootObject:self toFile:archivePath];
+}
+
++(instancetype)loadInstance
+{
+    NSString *archivePath = [Utilities loggerArchiveFilePath];
+    NSData *decodedData = [NSData dataWithContentsOfFile:archivePath];
+    if (decodedData)
+    {
+        Logger *loggerData = [NSKeyedUnarchiver unarchiveObjectWithData:decodedData];
+        return loggerData;
+    }
+    
+    return [[Logger alloc] init];
 }
 
 + (void)writeToLogFile: (NSString *)stringToWrite
