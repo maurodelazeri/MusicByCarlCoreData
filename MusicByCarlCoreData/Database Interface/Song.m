@@ -10,6 +10,7 @@
 #import "Album.h"
 #import "Albums.h"
 #import "Playlist.h"
+#import "CurrentSongsInfo.h"
 
 #import "DatabaseInterface.h"
 #import "Utilities.h"
@@ -17,7 +18,6 @@
 @implementation Song
 
 @dynamic albumArtist;
-//@dynamic albumArtwork;
 @dynamic albumPersistentID;
 @dynamic albumTitle;
 @dynamic artist;
@@ -67,6 +67,8 @@
     self.lastPlayedTime = lastPlayedTime;
     
     [databaseInterface saveContext];
+    
+    [[CurrentSongsInfo sharedCurrentSongsInfo] updateLastPlayedTimeArrayWithSong:self];
 }
 
 - (Album *)albumFromAlbumPersistentID {
