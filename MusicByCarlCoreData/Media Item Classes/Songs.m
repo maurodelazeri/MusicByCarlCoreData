@@ -12,6 +12,7 @@
 #import "Artist.h"
 #import "Song.h"
 #import "Songs.h"
+#import "CurrentSongsInfo.h"
 
 #import "Utilities.h"
 #import "Logger.h"
@@ -264,7 +265,7 @@
 }
 
 // THIS METHOD MUST BE CALLED FROM A BACKGROUND THREAD TO AVOID BLOCKING THE UI
-- (NSMutableArray *)returnLastPlayedTimes
+- (NSMutableArray *)returnAllSongsLastPlayedTimes
 {
     NSMutableArray *returnValue = [[NSMutableArray alloc] init];
     
@@ -285,8 +286,10 @@
     {
         currentSong = (Song *)[songsArray objectAtIndex:i];
         currentSongDictionary = @{@"songTitle": currentSong.songTitle,
-                                  @"artist": currentSong.artist,
                                   @"albumTitle": currentSong.albumTitle,
+                                  @"artist": currentSong.artist,
+                                  @"albumArtist": currentSong.albumArtist,
+                                  @"trackNumber": currentSong.trackNumber,
                                   @"lastPlayedTime": currentSong.lastPlayedTime};
         [returnValue addObject:currentSongDictionary];
     }
@@ -295,47 +298,24 @@
 }
 
 // THIS METHOD MUST BE CALLED FROM A BACKGROUND THREAD TO AVOID BLOCKING THE UI
-- (void)fillSongsWithNonzeroLastPlayedTimesWithDatabasePtr:(DatabaseInterface *)databaseInterfacePtr
-{
-    Song *currentSong;
-    NSDictionary *songDictionary;
-    self.nonzeroPlayedTimeSongsArray = [[NSMutableArray alloc] init];
-    
-    NSArray *songsArray = [self getNonzeroPlayedTimeSongsWithDatabasePtr:databaseInterfacePtr];
-    
-    for (int i = 0; i < songsArray.count; i++)
-    {
-        currentSong = [songsArray objectAtIndex:i];
-        songDictionary = [[NSDictionary alloc] initWithObjectsAndKeys:
-                            currentSong.songTitle, @"songTitle",
-                            currentSong.albumTitle, @"albumTitle",
-                            currentSong.artist, @"artist",
-                            currentSong.albumArtist, @"albumArtist",
-                            currentSong.trackNumber, @"trackNumber",
-                            currentSong.lastPlayedTime, @"lastPlayedTime",
-                            nil];
-        
-        [self.nonzeroPlayedTimeSongsArray addObject:songDictionary];
-    }
-}
-
-// THIS METHOD MUST BE CALLED FROM A BACKGROUND THREAD TO AVOID BLOCKING THE UI
 - (void)restoreLastPlayedTimesWithDatabasePtr:(DatabaseInterface *)databaseInterface
 {
-     NSDictionary *currentSong;
-     Song *songInDatabase;
-     int songsFound = 0;
-     
-     for (int i = 0; i < self.nonzeroPlayedTimeSongsArray.count; i++)
-     {
-         currentSong = [self.nonzeroPlayedTimeSongsArray objectAtIndex:i];
-         songInDatabase = [self findSongWithTitle:[currentSong objectForKey:@"songTitle"] fromAlbum:[currentSong objectForKey:@"albumTitle"] byArtist:[currentSong objectForKey:@"artist"] andAlbumArtist:[currentSong objectForKey:@"albumArtist"] withTrackNumber:[currentSong objectForKey:@"trackNumber"] withDatabasePtr:databaseInterface];
-         if (songInDatabase != nil)
-         {
-             [songInDatabase updateLastPlayedTime:[currentSong objectForKey:@"lastPlayedTime"] withDatabasePtr:databaseInterface];
-             songsFound++;
-         }
-     }
+    NSDictionary *currentSong;
+    Song *songInDatabase;
+    int songsFound = 0;
+    
+    NSArray *lastPlayedTimesArray = [[CurrentSongsInfo sharedCurrentSongsInfo] returnSongsLastPlayedTimesArray];
+    
+    for (int i = 0; i < lastPlayedTimesArray.count; i++)
+    {
+        currentSong = [lastPlayedTimesArray objectAtIndex:i];
+        songInDatabase = [self findSongWithTitle:[currentSong objectForKey:@"songTitle"] fromAlbum:[currentSong objectForKey:@"albumTitle"] byArtist:[currentSong objectForKey:@"artist"] andAlbumArtist:[currentSong objectForKey:@"albumArtist"] withTrackNumber:[currentSong objectForKey:@"trackNumber"] withDatabasePtr:databaseInterface];
+        if (songInDatabase != nil)
+        {
+            [songInDatabase updateLastPlayedTime:[currentSong objectForKey:@"lastPlayedTime"] withDatabasePtr:databaseInterface];
+            songsFound++;
+        }
+    }
 }
 
 // THIS METHOD MUST BE CALLED FROM A BACKGROUND THREAD TO AVOID BLOCKING THE UI
