@@ -169,9 +169,11 @@
     
     [self registerNotifications];
     
+    [self.currentSongsInfo fillLastPlayedTimesArray];
+    
     if (self.newSongList) {
         self.newSongList = NO;
-        [self.currentSongsInfo initOldSongsArrays];
+        [self.currentSongsInfo fillOldSongsArrays];
     }
     
     NSInteger currentSongIndex = [self.currentSongsInfo retrieveCurrentSongIndex];
