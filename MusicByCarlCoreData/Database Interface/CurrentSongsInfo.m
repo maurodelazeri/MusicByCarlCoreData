@@ -12,6 +12,20 @@
 #import "Utilities.h"
 #import "Logger.h"
 
+@interface CurrentSongsInfo()
+
+@property (nonatomic, strong) NSNumber * currentSongIndex;
+@property (nonatomic, strong) NSMutableOrderedSet *currentSongsList;
+@property (nonatomic, strong) NSMutableOrderedSet *songsNeverPlayed;
+@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanFourteenDays;
+@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanSevenDays;
+@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanThirtyDays;
+@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanTwentyOneDays;
+@property (nonatomic, strong) NSMutableArray *songsLastPlayedTimes;
+@property (nonatomic, strong) Songs *songsPtr;
+
+@end
+
 @implementation CurrentSongsInfo
 
 // This class method initializes the static singleton pointer
@@ -105,6 +119,7 @@
     [encoder encodeObject:self.songsOlderThanTwentyOneDays forKey:@"songsOlderThanTwentyOneDays"];
     [encoder encodeObject:self.songsOlderThanFourteenDays forKey:@"songsOlderThanFourteenDays"];
     [encoder encodeObject:self.songsOlderThanSevenDays forKey:@"songsOlderThanSevenDays"];
+    [encoder encodeObject:self.songsLastPlayedTimes forKey:@"songsLastPlayedTimes"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -120,6 +135,7 @@
         _songsOlderThanTwentyOneDays = [decoder decodeObjectForKey:@"songsOlderThanTwentyOneDays"];
         _songsOlderThanFourteenDays = [decoder decodeObjectForKey:@"songsOlderThanFourteenDays"];
         _songsOlderThanSevenDays = [decoder decodeObjectForKey:@"songsOlderThanSevenDays"];
+        _songsLastPlayedTimes = [decoder decodeObjectForKey:@"songsLastPlayedTimes"];
     }
     else
     {
@@ -130,6 +146,7 @@
         _songsOlderThanTwentyOneDays = nil;
         _songsOlderThanFourteenDays = nil;
         _songsOlderThanSevenDays = nil;
+        _songsLastPlayedTimes = nil;
     }
     
     return self;
@@ -306,7 +323,7 @@
     [self removeAllOlderThanSevenDaysSongs];
 }
 
-- (void)initOldSongsArrays
+- (void)fillOldSongsArrays
 {
     int songsNeverPlayedCount = 0;
     int songsOlderThanThirtyDaysCount = 0;
@@ -317,7 +334,7 @@
     NSOrderedSet *currentSongList = [self retrieveCurrentSongsList];
     
     if (currentSongList != nil) {
-            NSArray *songDictionaries = [self.songsPtr fetchSongsLastPlayedTimesWithInternalIDs:currentSongList];
+        NSArray *songDictionaries = [self.songsPtr fetchSongsLastPlayedTimesWithInternalIDs:currentSongList];
         
         NSNumber *songInternalID;
         NSDate *songLastPlayedTime;
@@ -375,6 +392,51 @@
             }
         }
     }
+}
+
+- (void)fillLastPlayedTimesArray
+{
+    if (self.songsLastPlayedTimes.count == 0)
+    {
+        self.songsLastPlayedTimes = [self.songsPtr returnAllSongsLastPlayedTimes];
+    }
+}
+
+- (void)updateLastPlayedTimeArrayWithSong:(Song *)song
+{
+    NSUInteger songIndex = [self.songsLastPlayedTimes indexOfObjectPassingTest:^BOOL(NSDictionary *listDictionary, NSUInteger idx, BOOL *stop)
+                           {
+                               return ([[listDictionary objectForKey:@"songTitle"] isEqualToString:song.songTitle] &&
+                                       [[listDictionary objectForKey:@"albumTitle"] isEqualToString:song.albumTitle] &&
+                                       [[listDictionary objectForKey:@"artist"] isEqualToString:song.artist] &&
+                                       [[listDictionary objectForKey:@"albumArtist"] isEqualToString:song.albumArtist] &&
+                                       ([[listDictionary objectForKey:@"trackNumber"] compare:song.trackNumber] == NSOrderedSame));
+                           }
+                           ];
+    
+    if (songIndex == NSNotFound)
+    {
+        // Add the song
+        NSDictionary *newSongDictionary = @{@"songTitle": song.songTitle,
+                                            @"albumTitle": song.albumTitle,
+                                            @"artist": song.artist,
+                                            @"albumArtist": song.albumArtist,
+                                            @"trackNumber": song.trackNumber,
+                                            @"lastPlayedTime": song.lastPlayedTime};
+        [self.songsLastPlayedTimes addObject:newSongDictionary];
+    }
+    else
+    {
+        // Update the last played time for the song
+        NSMutableDictionary *existingSongDictionary = [[self.songsLastPlayedTimes objectAtIndex:songIndex] mutableCopy];
+        [existingSongDictionary setObject:song.lastPlayedTime forKey:@"lastPlayedTime"];
+        [self.songsLastPlayedTimes replaceObjectAtIndex:songIndex withObject:existingSongDictionary];
+    }
+}
+
+- (NSArray *)returnSongsLastPlayedTimesArray
+{
+    return self.songsLastPlayedTimes;
 }
 
 @end
