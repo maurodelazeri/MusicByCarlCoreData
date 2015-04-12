@@ -17,16 +17,16 @@
 + (Songs *)sharedSongs;
 
 @property (strong, nonatomic) NSArray *mediaLibrarySongsArray; // of MPMediaItem
-@property (strong, nonatomic) NSMutableArray *nonzeroPlayedTimeSongsArray;
 
 @property (strong, nonatomic) Artists *artistsPtr;
 
-- (void)fillSongsWithNonzeroLastPlayedTimesWithDatabasePtr:(DatabaseInterface *)databaseInterfacePtr;
 -(void)fillDatabaseSongsFromItunesLibrary: (BOOL)duringBuildAll withDatabasePtr:(DatabaseInterface *)databaseInterface;
+
 - (void)restoreLastPlayedTimesWithDatabasePtr:(DatabaseInterface *)databaseInterface;
 
 - (NSUInteger)numberOfSongsInDatabase;
 - (Song *)fetchSongWithInternalID: (NSInteger)songInternalID;
+- (NSMutableArray *)returnAllSongsLastPlayedTimes;
 - (NSDate *)fetchSongLastPlayedTimeWithInternalID: (NSInteger)songInternalID;
 - (NSArray *)fetchSongsLastPlayedTimesWithInternalIDs: (NSOrderedSet *)songsInternalIDs;
 - (NSDictionary *)fetchSongTitleAndArtistWithInternalID: (NSInteger)songInternalID;
@@ -34,6 +34,5 @@
 - (Song *)fetchSongBySongTitle: (NSString *)title albumTitle: (NSString *)albumTitle andArtist: (NSString *)artist withDatabasePtr: (DatabaseInterface *)databaseInterface;
 -(NSArray *)fetchAllArtistsFromSongs: (NSArray *)songsArray withDatabasePtr:(DatabaseInterface *)databaseInterface;
 - (NSMutableOrderedSet *)fetchAllSongInternalIDs;
-- (NSMutableArray *)returnLastPlayedTimes;
 
 @end
