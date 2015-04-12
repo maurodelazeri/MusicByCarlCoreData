@@ -221,8 +221,6 @@
 
 + (void)archiveAppData
 {
-    [Logger writeToLogFile:[NSString stringWithFormat:@"%s called", __PRETTY_FUNCTION__]];
-    
     [[CurrentSongsInfo sharedCurrentSongsInfo] archiveData];
     [[GlobalVars sharedGlobalVars] archiveData];
     [[Logger sharedLogger] archiveData];
