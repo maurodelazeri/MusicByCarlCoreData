@@ -13,19 +13,10 @@
 
 @interface CurrentSongsInfo : NSObject <NSCoding>
 
-@property (nonatomic, strong) NSNumber * currentSongIndex;
-@property (nonatomic, strong) NSMutableOrderedSet *currentSongsList;
-@property (nonatomic, strong) NSMutableOrderedSet *songsNeverPlayed;
-@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanFourteenDays;
-@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanSevenDays;
-@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanThirtyDays;
-@property (nonatomic, strong) NSMutableOrderedSet *songsOlderThanTwentyOneDays;
-@property (nonatomic, strong) Songs *songsPtr;
-
 // Singleton pointer given to other classes who access the AudioPlayback class
 + (CurrentSongsInfo *)sharedCurrentSongsInfo;
 
-- (void)initOldSongsArrays;
+- (void)fillOldSongsArrays;
 - (void)resetCurrentSongsInfoArrays;
 
 - (NSInteger)retrieveCurrentSongIndex;
@@ -70,6 +61,10 @@
 - (void)addOlderThanSevenDaysSong:(NSNumber *)songInternalId;
 - (void)removeOlderThanSevenDaysSong:(NSNumber *)songInternalId;
 - (void)removeAllOlderThanSevenDaysSongs;
+
+- (void)fillLastPlayedTimesArray;
+- (NSArray *)returnSongsLastPlayedTimesArray;
+- (void)updateLastPlayedTimeArrayWithSong:(Song *)song;
 
 - (void)archiveData;
 
