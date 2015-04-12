@@ -28,7 +28,6 @@
     Playlists *playlistsPtr;
     Songs *songsPtr;
     Genres *genresPtr;
-    NSMutableArray *lastPlayedTimes;
     UIActivityIndicatorView *databaseScreenSpinner;
     UIAlertView *albumAdditionAlert;
 }
@@ -204,8 +203,6 @@
     {
         databaseManagerPtr.databaseBuildInProgress = YES;
         DatabaseInterface *databaseInterfacePtr = [[DatabaseInterface alloc] init];
-        
-        [songsPtr fillSongsWithNonzeroLastPlayedTimesWithDatabasePtr:databaseInterfacePtr];
         
         [self deletePhase:@"Song" withDatabasePtr:databaseInterfacePtr];
         [self deletePhase:@"Album" withDatabasePtr:databaseInterfacePtr];
