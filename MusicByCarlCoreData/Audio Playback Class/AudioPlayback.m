@@ -142,7 +142,26 @@ static AudioPlayback *refToSelf;
 
 - (void)audioInterrupted: (NSNotification *)notification
 {
-    [Logger writeToLogFile:[NSString stringWithFormat:@"%s called with notification = %@", __PRETTY_FUNCTION__, notification]];
+    AVAudioSessionInterruptionType interruptionType = [[notification.userInfo objectForKey:@"AVAudioSessionInterruptionTypeKey"] unsignedIntegerValue];
+    
+    if (interruptionType == AVAudioSessionInterruptionTypeBegan)
+    {
+        // Audio is paused automatically, so update the pause button
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"MusicByCarlCoreData.updatePlayPauseButton" object:self userInfo:nil];
+    }
+    else
+    {
+        if (interruptionType == AVAudioSessionInterruptionTypeEnded)
+        {
+            AVAudioSessionInterruptionOptions interruptionOptions = [[notification.userInfo objectForKey:@"AVAudioSessionInterruptionOptionKey"] unsignedIntegerValue];
+            if (interruptionOptions == AVAudioSessionInterruptionOptionShouldResume)
+            {
+                // Resume the audio and update the play button
+                [self playAudio];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MusicByCarlCoreData.updatePlayPauseButton" object:self userInfo:nil];
+            }
+        }
+    }
 }
 
 - (void)routeChanged: (NSNotification *)notification
