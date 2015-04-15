@@ -64,13 +64,13 @@
 		67A1721B19D81D8B00B0F6C2 /* AlbumTextLabelsData.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A1721A19D81D8B00B0F6C2 /* AlbumTextLabelsData.m */; };
 		67A547E11874BDED00C79D1C /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A547E01874BDED00C79D1C /* Logger.m */; };
 		67A781A5194BD31D0054B0E1 /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 67A781A4194BD31D0054B0E1 /* DatabaseManager.m */; };
-		67AF68FF19D4C2B800F0943C /* CoverFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF68FE19D4C2B800F0943C /* CoverFlowViewController.m */; };
 		67AF690319D4CDCA00F0943C /* AlbumImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67AF690219D4CDCA00F0943C /* AlbumImageCell.m */; };
 		67B0487618A0A1C70029A0E0 /* AlbumInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67B0487518A0A1C70029A0E0 /* AlbumInfoView.xib */; };
 		67B0487918A0A1F00029A0E0 /* AlbumInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67B0487818A0A1F00029A0E0 /* AlbumInfoView.m */; };
 		67B5802317DD41D700E19FE8 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67B5802217DD41D700E19FE8 /* AudioToolbox.framework */; };
 		67C463BF1875BA9C00E5EEE1 /* White-shuffle-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C463BD1875BA9C00E5EEE1 /* White-shuffle-button.png */; };
 		67C463C01875BA9C00E5EEE1 /* White-shuffle-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C463BE1875BA9C00E5EEE1 /* White-shuffle-button@2x.png */; };
+		67DAA5EF1ADE12DB00DCC68F /* CoverFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DAA5ED1ADE12DB00DCC68F /* CoverFlowViewController.m */; };
 		67E049AB17D1B171006FBB4B /* Albums-tab-bar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E0498917D1B171006FBB4B /* Albums-tab-bar-icon.png */; };
 		67E049AC17D1B171006FBB4B /* Albums-tab-bar-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E0498A17D1B171006FBB4B /* Albums-tab-bar-icon@2x.png */; };
 		67E049AD17D1B171006FBB4B /* Artists-tab-bar-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 67E0498B17D1B171006FBB4B /* Artists-tab-bar-icon.png */; };
@@ -233,8 +233,6 @@
 		67A547E01874BDED00C79D1C /* Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
 		67A781A3194BD31D0054B0E1 /* DatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatabaseManager.h; path = "Utility Classes/DatabaseManager.h"; sourceTree = "<group>"; };
 		67A781A4194BD31D0054B0E1 /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatabaseManager.m; path = "Utility Classes/DatabaseManager.m"; sourceTree = "<group>"; };
-		67AF68FD19D4C2B800F0943C /* CoverFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoverFlowViewController.h; path = "View Controllers/CoverFlowViewController.h"; sourceTree = "<group>"; };
-		67AF68FE19D4C2B800F0943C /* CoverFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoverFlowViewController.m; path = "View Controllers/CoverFlowViewController.m"; sourceTree = "<group>"; };
 		67AF690119D4CDCA00F0943C /* AlbumImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumImageCell.h; sourceTree = "<group>"; };
 		67AF690219D4CDCA00F0943C /* AlbumImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumImageCell.m; sourceTree = "<group>"; };
 		67B0487518A0A1C70029A0E0 /* AlbumInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumInfoView.xib; sourceTree = "<group>"; };
@@ -247,6 +245,8 @@
 		67C463BE1875BA9C00E5EEE1 /* White-shuffle-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "White-shuffle-button@2x.png"; path = "Images/White-shuffle-button@2x.png"; sourceTree = "<group>"; };
 		67C8D09E19CBAFD500AAD107 /* MusicByCarl 1.8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.8.xcdatamodel"; sourceTree = "<group>"; };
 		67D08A9319CBCEDD00D53712 /* MusicByCarl 1.9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.9.xcdatamodel"; sourceTree = "<group>"; };
+		67DAA5EC1ADE12DB00DCC68F /* CoverFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoverFlowViewController.h; path = "View Controllers/CoverFlowViewController.h"; sourceTree = "<group>"; };
+		67DAA5ED1ADE12DB00DCC68F /* CoverFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoverFlowViewController.m; path = "View Controllers/CoverFlowViewController.m"; sourceTree = "<group>"; };
 		67DBB31B1A0A210D002ABF25 /* MusicByCarl 1.15.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MusicByCarl 1.15.xcdatamodel"; sourceTree = "<group>"; };
 		67E0498917D1B171006FBB4B /* Albums-tab-bar-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Albums-tab-bar-icon.png"; path = "Images/Albums-tab-bar-icon.png"; sourceTree = "<group>"; };
 		67E0498A17D1B171006FBB4B /* Albums-tab-bar-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Albums-tab-bar-icon@2x.png"; path = "Images/Albums-tab-bar-icon@2x.png"; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 				67FEC58717AE2B1F00A7AFAC /* AllPlaylistsViewController.m */,
 				6703FC5B17A4D1470058CCA0 /* AllSongsViewController.h */,
 				6703FC5C17A4D1470058CCA0 /* AllSongsViewController.m */,
-				67AF68FD19D4C2B800F0943C /* CoverFlowViewController.h */,
-				67AF68FE19D4C2B800F0943C /* CoverFlowViewController.m */,
+				67DAA5EC1ADE12DB00DCC68F /* CoverFlowViewController.h */,
+				67DAA5ED1ADE12DB00DCC68F /* CoverFlowViewController.m */,
 				6703FC5F17A4D1CA0058CCA0 /* DatabaseViewController.h */,
 				6703FC6017A4D1CA0058CCA0 /* DatabaseViewController.m */,
 				672EA167197B50EF00305930 /* EmailLogViewController.h */,
@@ -774,6 +774,7 @@
 				67A1721B19D81D8B00B0F6C2 /* AlbumTextLabelsData.m in Sources */,
 				67B0487918A0A1F00029A0E0 /* AlbumInfoView.m in Sources */,
 				6703FC6517A4DAD90058CCA0 /* DatabaseInterface.m in Sources */,
+				67DAA5EF1ADE12DB00DCC68F /* CoverFlowViewController.m in Sources */,
 				6703FC7317A50ACD0058CCA0 /* SongCell.m in Sources */,
 				6797975C1A2CDC7900574164 /* CoverFlowLayout.m in Sources */,
 				67E11F7519D506AA0022DD42 /* GlobalVars.m in Sources */,
@@ -803,7 +804,6 @@
 				67AF690319D4CDCA00F0943C /* AlbumImageCell.m in Sources */,
 				6735DA2E1952518B0087CBDD /* Artist.m in Sources */,
 				67EC6E3A17DC72A90027A44A /* AllGenresViewController.m in Sources */,
-				67AF68FF19D4C2B800F0943C /* CoverFlowViewController.m in Sources */,
 				67ED564D1979F9E400914F66 /* IToast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -896,7 +896,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicByCarlCoreData/MusicByCarlCoreData-Prefix.pch";
 				INFOPLIST_FILE = "MusicByCarlCoreData/MusicByCarlCoreData-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -920,7 +920,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MusicByCarlCoreData/MusicByCarlCoreData-Prefix.pch";
 				INFOPLIST_FILE = "MusicByCarlCoreData/MusicByCarlCoreData-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
