@@ -59,7 +59,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nsT-y0-Sk2" id="jds-3I-eso"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="RUo-IL-nQW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kOh-zR-9Tv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -156,7 +155,6 @@
                     <connections>
                         <outlet property="songCountLabel" destination="RZc-z1-wJc" id="LRJ-sG-Rb3"/>
                         <outlet property="tableView" destination="gNZ-iG-eDF" id="DCF-T3-i8z"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="uU3-In-BBl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PS3-sB-o94" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -335,7 +333,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="a1H-xp-Huf" id="Tr0-bt-3h4"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="XwE-8S-S8A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koC-Ko-6Kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -343,89 +340,96 @@
             <point key="canvasLocation" x="1756" y="741"/>
         </scene>
         <!--Cover Flow View Controller-->
-        <scene sceneID="53G-Pf-Rff">
+        <scene sceneID="FBh-eL-PyM">
             <objects>
-                <viewController restorationIdentifier="coverFlowViewController" storyboardIdentifier="CoverFlowViewController" id="VpK-n0-cGu" customClass="CoverFlowViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="F4l-C9-qFT">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <viewController storyboardIdentifier="CoverFlowViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="be6-oU-IvB" customClass="CoverFlowViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VAm-dP-R0J">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" id="DE4-jL-6Ig">
-                                <rect key="frame" x="0.0" y="40" width="568" height="270"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="K3f-D8-jpS">
-                                    <size key="itemSize" width="130" height="270"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="5hu-bH-zTk">
+                                <rect key="frame" x="34" y="20" width="500" height="300"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="HVD-y1-GPm">
+                                    <size key="itemSize" width="130" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="AlbumImageCell" id="e2w-gD-neF" customClass="AlbumImageCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="270"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AlbumImageCell" id="vcD-Ti-IcE" customClass="AlbumImageCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="270"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yKi-8Y-ZDT">
-                                                    <rect key="frame" x="0.0" y="50" width="130" height="130"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
+                                                <view contentMode="scaleAspectFit" id="r1g-Lj-Ksc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="300"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="A3a-ev-WLe">
+                                                            <rect key="frame" x="0.0" y="60" width="130" height="130"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="yPr-a2-bNI">
+                                                            <rect key="frame" x="0.0" y="190" width="130" height="130"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <gestureRecognizers/>
                                         <connections>
-                                            <outlet property="albumArtworkImage" destination="yKi-8Y-ZDT" id="ESR-Ge-PxV"/>
-                                            <outletCollection property="gestureRecognizers" destination="2KD-eQ-LvP" appends="YES" id="Xu2-pm-fL2"/>
+                                            <outlet property="albumArtworkImage" destination="A3a-ev-WLe" id="sIz-Pr-fFL"/>
+                                            <outlet property="albumArtworkReflectionImage" destination="yPr-a2-bNI" id="QPU-1G-ItI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="VpK-n0-cGu" id="kBk-XR-0pM"/>
-                                    <outlet property="delegate" destination="VpK-n0-cGu" id="ybD-hN-axo"/>
+                                    <outlet property="dataSource" destination="be6-oU-IvB" id="5m5-I0-tij"/>
+                                    <outlet property="delegate" destination="be6-oU-IvB" id="TVe-Y0-j3M"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mi1-NZ-760">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="17T-YA-SIW">
                                 <rect key="frame" x="188" y="240" width="196" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kii-ga-stI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bEx-A7-qji">
                                 <rect key="frame" x="188" y="260" width="196" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y93-bq-dQd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RcO-k7-Lt1">
                                 <rect key="frame" x="188" y="280" width="196" height="21"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bSC-9l-m7L"/>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="568" height="320"/>
                     <connections>
-                        <outlet property="albumTitleLabel" destination="y93-bq-dQd" id="s7D-81-2W0"/>
-                        <outlet property="artistLabel" destination="mi1-NZ-760" id="K8n-YG-9p1"/>
-                        <outlet property="collectionViewOutlet" destination="DE4-jL-6Ig" id="qsW-SM-n3U"/>
-                        <outlet property="songTitleLabel" destination="kii-ga-stI" id="A8D-pY-xiv"/>
+                        <outlet property="albumTitleLabel" destination="RcO-k7-Lt1" id="50d-VW-sfQ"/>
+                        <outlet property="artistLabel" destination="17T-YA-SIW" id="kSq-yY-YLS"/>
+                        <outlet property="collectionViewOutlet" destination="5hu-bH-zTk" id="48p-Dg-NAe"/>
+                        <outlet property="songTitleLabel" destination="bEx-A7-qji" id="kSq-W3-Xel"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="e8w-6V-ina" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="2KD-eQ-LvP">
-                    <connections>
-                        <action selector="tapRecognizer:" destination="VpK-n0-cGu" id="5dS-9b-HEf"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ofq-Xq-KZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3279" y="-128"/>
+            <point key="canvasLocation" x="3796" y="-582"/>
         </scene>
         <!--Now Playing View Controller-->
         <scene sceneID="5LA-Da-YXR">
@@ -581,7 +585,6 @@
                         <outlet property="trackTimeRemainingLabel" destination="DqX-W4-xxn" id="N8T-RN-GvE"/>
                         <outlet property="volumeSlider" destination="0JB-4V-A6s" id="P4S-0v-UZO"/>
                         <outlet property="volumeViewParentView" destination="Wq1-Uj-tar" id="vQv-OW-iTM"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="Owe-8K-bh6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhN-cP-M22" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -657,7 +660,6 @@
                     <connections>
                         <outlet property="albumTypeButton" destination="mH4-dj-ThH" id="x3W-4a-Ypj"/>
                         <outlet property="tableView" destination="8jA-cQ-nd6" id="bgF-gj-E0l"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="wXw-gu-yy2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q3Q-o8-Cdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -753,7 +755,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="3Pt-fC-kvq" id="HW3-Lv-e5U"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="PKu-fC-6A5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyg-Uw-L9q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -801,7 +802,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="K4u-SB-edV" id="eSz-IE-Cvy"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="GrL-ej-Vd0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUF-ms-Duo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -824,7 +824,6 @@
                         <segue destination="fK9-Vb-E2e" kind="relationship" relationship="viewControllers" id="eq4-Ld-j8L"/>
                         <segue destination="8Vb-db-NWa" kind="relationship" relationship="viewControllers" id="gKC-AM-diC"/>
                         <segue destination="IoL-KE-a46" kind="relationship" relationship="viewControllers" id="dRw-h0-Vob"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="ZUU-Et-dEW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WZd-0u-NTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -844,7 +843,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="xtx-N6-uhB" kind="relationship" relationship="rootViewController" id="h0C-xC-XjR"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="N0c-Xp-7tA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8l-s3-Kcv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -905,7 +903,6 @@
                         <segue destination="hdB-mK-Vtu" kind="push" identifier="genresSegue" id="GN1-SK-71a"/>
                         <segue destination="2" kind="push" identifier="databaseSegue" id="kmB-nh-ajG"/>
                         <segue destination="ZFc-Mf-IgR" kind="push" identifier="emailLogSegue" id="Ahu-vz-hr8"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="RYs-FW-NKc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uY0-P9-NI1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -925,7 +922,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="uu3-Vk-H2O" kind="relationship" relationship="rootViewController" id="7l1-oV-42M"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="sV5-rh-2CX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhO-be-1k6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -988,7 +984,6 @@
                     <connections>
                         <outlet property="showAllButton" destination="yeR-Yq-9mb" id="CPm-9o-qfr"/>
                         <outlet property="tableView" destination="awy-Q9-enR" id="Kcp-qX-0RO"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="GeQ-oH-Ool"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jI0-rA-EDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1008,7 +1003,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="EGb-MY-r9Z" kind="relationship" relationship="rootViewController" id="r7x-EM-x3P"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="GbW-wr-4AF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jEE-NF-RbC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1028,7 +1022,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="P2i-EQ-6qP" kind="relationship" relationship="rootViewController" id="dXx-Ax-EK6"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="5Pn-Gp-z0c"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVn-mi-RJK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1048,7 +1041,6 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="jic-nQ-CDZ" kind="relationship" relationship="rootViewController" id="Hqi-tc-6EU"/>
-                        <segue destination="VpK-n0-cGu" kind="push" identifier="ShowCoverFlow" id="0dc-AG-W9w"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGa-u1-PNY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1071,7 +1063,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ZUU-Et-dEW"/>
         <segue reference="ZJm-WQ-dgv"/>
         <segue reference="KzQ-pi-wUr"/>
         <segue reference="MKe-kh-GFk"/>
