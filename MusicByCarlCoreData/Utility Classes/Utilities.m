@@ -541,12 +541,9 @@ const double secondsInADay = 60.0 * 60.0 * 24.0;
 }
 
 + (void)segueToCoverFlow:(UIViewController *)viewController {
-    @try {
-        [viewController performSegueWithIdentifier:@"ShowCoverFlow" sender:viewController];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Segue not found: %@", exception);
-    }
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    UIViewController *coverFlowController =[storyboard instantiateViewControllerWithIdentifier:@"CoverFlowViewController"];
+    [viewController.navigationController pushViewController:coverFlowController animated:YES];
 }
 
 @end
