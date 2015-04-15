@@ -181,57 +181,55 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (![[segue identifier] isEqualToString:@"ShowCoverFlow"]) {
-        NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
-        nowPlayingViewController.shuffleAllFlag = NO;
+    NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
+    nowPlayingViewController.shuffleAllFlag = NO;
+    
+    if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
+    {
+        nowPlayingViewController.startNewAudio = NO;
+        nowPlayingViewController.nowPlayingSegue = YES;
+    }
+    else
+    {
+        Song *selectedSong = nil;
         
-        if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
+        // Both the paths through here identify the song to be played by setting the audioPlaybackPtr's currentSongIndex
+        CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
+
+        [currentSongsInfo resetCurrentSongsInfoArrays];
+        [currentSongsInfo addAllCurrentSongListSongs:[self fetchCurrentPlaylistSongsInternalIDs]];
+
+        if ([[segue identifier] isEqualToString:@"shuffleAllSongs"])
         {
-            nowPlayingViewController.startNewAudio = NO;
-            nowPlayingViewController.nowPlayingSegue = YES;
+            UserPreferences *userPreferencesPtr = [UserPreferences sharedUserPreferences];
+            [userPreferencesPtr newShuffleFlagValue:YES];
+            nowPlayingViewController.shuffleAllFlag = YES;
         }
         else
         {
-            Song *selectedSong = nil;
-            
-            // Both the paths through here identify the song to be played by setting the audioPlaybackPtr's currentSongIndex
-            CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
-
-            [currentSongsInfo resetCurrentSongsInfoArrays];
-            [currentSongsInfo addAllCurrentSongListSongs:[self fetchCurrentPlaylistSongsInternalIDs]];
-
-            if ([[segue identifier] isEqualToString:@"shuffleAllSongs"])
+            if ([[segue identifier] isEqualToString:@"playNewSong"])
             {
-                UserPreferences *userPreferencesPtr = [UserPreferences sharedUserPreferences];
-                [userPreferencesPtr newShuffleFlagValue:YES];
-                nowPlayingViewController.shuffleAllFlag = YES;
-            }
-            else
-            {
-                if ([[segue identifier] isEqualToString:@"playNewSong"])
+                NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+                
+                if (self.fetchedResultsController == nil)
                 {
-                    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-                    
-                    if (self.fetchedResultsController == nil)
-                    {
-                        selectedSong = [self.playlist.playlistSongs objectAtIndex:indexPath.row];
-                    }
-                    else
-                    {
-                        NSIndexPath *realIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
-                        selectedSong = [self.fetchedResultsController objectAtIndexPath:realIndexPath];
-                    }
+                    selectedSong = [self.playlist.playlistSongs objectAtIndex:indexPath.row];
                 }
-                if (selectedSong)
+                else
                 {
-                    CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
-                    [currentSongsInfo updateCurrentSongIndex: [currentSongsInfo currentSongListIndexOfInternalId:selectedSong.internalID]];
+                    NSIndexPath *realIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
+                    selectedSong = [self.fetchedResultsController objectAtIndexPath:realIndexPath];
                 }
             }
-            
-            nowPlayingViewController.newSongList = YES;
-            nowPlayingViewController.startNewAudio = YES;
+            if (selectedSong)
+            {
+                CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
+                [currentSongsInfo updateCurrentSongIndex: [currentSongsInfo currentSongListIndexOfInternalId:selectedSong.internalID]];
+            }
         }
+        
+        nowPlayingViewController.newSongList = YES;
+        nowPlayingViewController.startNewAudio = YES;
     }
 }
 
