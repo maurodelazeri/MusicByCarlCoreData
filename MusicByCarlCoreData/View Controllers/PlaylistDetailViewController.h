@@ -25,6 +25,4 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UILabel *songCountLabel;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @end
