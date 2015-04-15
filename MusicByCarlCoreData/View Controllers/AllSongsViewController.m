@@ -140,31 +140,29 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (![[segue identifier] isEqualToString:@"ShowCoverFlow"]) {
-        NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
-        nowPlayingViewController.shuffleAllFlag = NO;
+    NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
+    nowPlayingViewController.shuffleAllFlag = NO;
+    
+    if ([[segue identifier] isEqualToString:@"playNewSong"])
+    {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSIndexPath *realIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
+        Song *currentSong = [self.fetchedResultsController objectAtIndexPath:realIndexPath];
         
-        if ([[segue identifier] isEqualToString:@"playNewSong"])
+        CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
+        [currentSongsInfo resetCurrentSongsInfoArrays];
+        [currentSongsInfo addAllCurrentSongListSongs:[songsPtr fetchAllSongInternalIDs]];
+        [currentSongsInfo updateCurrentSongIndex:currentSong.internalID.integerValue];
+        
+        nowPlayingViewController.newSongList = YES;
+        nowPlayingViewController.startNewAudio = YES;
+    }
+    else
+    {
+        if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
         {
-            NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-            NSIndexPath *realIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section-1];
-            Song *currentSong = [self.fetchedResultsController objectAtIndexPath:realIndexPath];
-            
-            CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
-            [currentSongsInfo resetCurrentSongsInfoArrays];
-            [currentSongsInfo addAllCurrentSongListSongs:[songsPtr fetchAllSongInternalIDs]];
-            [currentSongsInfo updateCurrentSongIndex:currentSong.internalID.integerValue];
-            
-            nowPlayingViewController.newSongList = YES;
-            nowPlayingViewController.startNewAudio = YES;
-        }
-        else
-        {
-            if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
-            {
-                nowPlayingViewController.startNewAudio = NO;
-                nowPlayingViewController.nowPlayingSegue = YES;
-            }
+            nowPlayingViewController.startNewAudio = NO;
+            nowPlayingViewController.nowPlayingSegue = YES;
         }
     }
 }
