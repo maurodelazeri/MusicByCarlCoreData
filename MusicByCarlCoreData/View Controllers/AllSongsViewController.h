@@ -17,8 +17,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @property (strong, nonatomic) NSArray *sectionIndexTitles; // of NSString
 @property (strong, nonatomic) NSArray *sectionTitles; // of NSString
 
