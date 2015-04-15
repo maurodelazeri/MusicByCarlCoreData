@@ -92,8 +92,6 @@
     
     rootViewController = (UITabBarController *)self.window.rootViewController;
     
-    [self registerOrientationChangedObserver];
-    
     // Set an uncaught exception handler that logs a complete stack trace
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
 
@@ -143,50 +141,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)registerOrientationChangedObserver {
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self selector:@selector(orientationChanged:)
-     name:UIDeviceOrientationDidChangeNotification
-     object:[UIDevice currentDevice]];
-}
-
-- (void)orientationChanged:(NSNotification *)notification
-{
-    UINavigationController *currentNavigationController = (UINavigationController *)rootViewController.selectedViewController;
-    UIViewController *visibleViewController = currentNavigationController.visibleViewController;
-
-    UIDevice *device = notification.object;
-    switch(device.orientation)
-    {
-        case UIDeviceOrientationLandscapeLeft:
-            [self segueToCoverFlow:currentNavigationController.visibleViewController];
-            break;
-            
-        case UIDeviceOrientationLandscapeRight:
-            [self segueToCoverFlow:currentNavigationController.visibleViewController];
-            break;
-            
-        case UIDeviceOrientationPortrait:
-            if ([visibleViewController class] == [CoverFlowViewController class]) {
-                [visibleViewController.navigationController popViewControllerAnimated:YES];
-            }
-            break;
-            
-        default:
-            break;
-    };
-}
-
-- (void)segueToCoverFlow:(UIViewController *)currentlyVisibleController {
-    @try {
-        [currentlyVisibleController performSegueWithIdentifier:@"ShowCoverFlow" sender:currentlyVisibleController];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Segue not found: %@", exception);
-    }
-}
-
 - (void) createCustomGUI
 {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
@@ -206,7 +160,7 @@
     
     [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"Tab-bar.png"]];
     [[UITabBar appearance] setSelectionIndicatorImage:[UIImage imageNamed:@"Tab-bar-item-selected.png"]];
-    [[UITabBar appearance] setSelectedImageTintColor: [UIColor blackColor]];
+    [[UITabBar appearance] setTintColor: [UIColor blackColor]];
     
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor whiteColor];
