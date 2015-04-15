@@ -14,8 +14,6 @@
 
 @interface AllAlbumsViewController : FetchedTableViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
 @property (nonatomic) BOOL instrumentalAlbumsFlag;
 
 @property (strong, nonatomic) Albums *albumsPtr;
