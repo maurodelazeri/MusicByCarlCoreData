@@ -14,13 +14,14 @@
 #import "Utilities.h"
 #import "Logger.h"
 
-@interface AllAlbumsViewController ()
+@interface AllAlbumsViewController () <UIContentContainer>
 {
     NSUInteger lastNumberOfAlbums;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *albumTypeButton;
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
 @end
 
 @implementation AllAlbumsViewController
@@ -105,6 +106,8 @@
 {
     [super viewDidLoad];
 
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     lastNumberOfAlbums = 0;
     
     [self.tableView setBackgroundColor: [UIColor clearColor]];
@@ -145,6 +148,8 @@
     
     NSUInteger currentNumberOfAlbums = [Albums numberOfAlbumsInDatabase];
     
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
     if (currentNumberOfAlbums != lastNumberOfAlbums)
     {
         lastNumberOfAlbums = currentNumberOfAlbums;
@@ -152,10 +157,46 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
+    [super viewDidDisappear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationLandscapeLeft ||
+                 orientation == UIInterfaceOrientationLandscapeRight)
+             {
+                 [Utilities segueToCoverFlow:self];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void)newBarButtonColor: (UIColor *)color

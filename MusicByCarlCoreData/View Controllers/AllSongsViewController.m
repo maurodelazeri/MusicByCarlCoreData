@@ -19,11 +19,13 @@
 #import "Utilities.h"
 #import "Logger.h"
 
-@interface AllSongsViewController ()
+@interface AllSongsViewController () <UIContentContainer>
 {
     Songs *songsPtr;
     NSUInteger lastNumberOfSongs;
 }
+
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
 @end
 
 @implementation AllSongsViewController
@@ -66,6 +68,8 @@
 {
     [super viewDidLoad];
 
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     songsPtr = [Songs sharedSongs];
     lastNumberOfSongs = 0;
     
@@ -85,10 +89,53 @@
     [self createNewFetchedResultsController:self.searchBarText];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationLandscapeLeft ||
+                 orientation == UIInterfaceOrientationLandscapeRight)
+             {
+                 [Utilities segueToCoverFlow:self];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

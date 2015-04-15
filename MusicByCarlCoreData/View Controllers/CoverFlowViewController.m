@@ -19,7 +19,7 @@
 
 #import "Logger.h"
 
-@interface CoverFlowViewController()
+@interface CoverFlowViewController() <UIContentContainer>
 {
     __weak IBOutlet UICollectionView *collectionViewOutlet;
     __weak IBOutlet UILabel *artistLabel;
@@ -32,6 +32,7 @@
 
 @property (strong, nonatomic) DatabaseManager *databaseManagerPtr;
 @property (strong, nonatomic) NSMutableDictionary *imageToOperationDictionary;
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
 @end
 
 @implementation CoverFlowViewController
@@ -56,6 +57,8 @@
 {
     [super viewDidLoad];
     
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     CoverFlowLayout *layout = [[CoverFlowLayout alloc] init];
     collectionViewOutlet.collectionViewLayout = layout;
 }
@@ -79,6 +82,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
     [self displayTextForAlbumAtScreenCenter];
 }
 
@@ -87,6 +94,41 @@
     self.tabBarController.tabBar.hidden = previousTabBarHidden;
     
     [super viewWillDisappear:animated];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
+    [super viewDidDisappear:animated];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationPortrait)
+             {
+                 [self.navigationController popViewControllerAnimated:YES];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void)didReceiveMemoryWarning

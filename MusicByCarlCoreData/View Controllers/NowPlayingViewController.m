@@ -17,7 +17,7 @@
 #import "Logger.h"
 #import "MillisecondTimer.h"
 
-@interface NowPlayingViewController ()
+@interface NowPlayingViewController () <UIContentContainer>
 {
     UIImage *playIcon;
     UIImage *pauseIcon;
@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (strong, nonatomic) UserPreferences *userPreferencesPtr;
 @property (strong, nonatomic) CurrentSongsInfo *currentSongsInfo;
+
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
 @end
 
 @implementation NowPlayingViewController
@@ -103,6 +105,8 @@
 {
     [super viewDidLoad];
     
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     UIFont *artistFont = [UIFont boldSystemFontOfSize:12.0];
     self.scrollingArtistLabel.font = artistFont;
     self.scrollingArtistLabel.textColor = [UIColor whiteColor];
@@ -153,12 +157,16 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     [super viewDidDisappear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     
     [self updatePlayPauseButtton:[self.audioPlaybackPtr isAudioPlaying]];
 }
@@ -212,6 +220,35 @@
     
     [self startSongPlaybackTimer];
     [self updateTimeDisplayElements];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationLandscapeLeft ||
+                 orientation == UIInterfaceOrientationLandscapeRight)
+             {
+                 [Utilities segueToCoverFlow:self];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 -(void)startSongPlaybackTimer

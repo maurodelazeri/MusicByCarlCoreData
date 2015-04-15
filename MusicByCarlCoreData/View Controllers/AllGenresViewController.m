@@ -17,6 +17,10 @@
 #import "Utilities.h"
 #import "Logger.h"
 
+@interface AllGenresViewController () <UIContentContainer>
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
+@end
+
 @implementation AllGenresViewController
 
 - (Genres *)genresPtr
@@ -65,6 +69,8 @@
 {
     [super viewDidLoad];
 
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
     self.tableView.sectionIndexBackgroundColor = [UIColor blackColor];
     self.tableView.sectionIndexTrackingBackgroundColor = [UIColor blackColor];
 }
@@ -76,15 +82,58 @@
     [self createNewFetchedResultsController];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     self.fetchedResultsController.delegate = nil;
     self.fetchedResultsController = nil;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationLandscapeLeft ||
+                 orientation == UIInterfaceOrientationLandscapeRight)
+             {
+                 [Utilities segueToCoverFlow:self];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
