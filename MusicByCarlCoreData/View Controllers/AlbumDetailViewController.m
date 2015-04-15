@@ -15,16 +15,18 @@
 #import "Song.h"
 #import "CurrentSongsInfo.h"
 
+#import "Utilities.h"
 #import "Logger.h"
 #import "MillisecondTimer.h"
 
-@interface AlbumDetailViewController ()
+@interface AlbumDetailViewController () <UIContentContainer>
 {
     NSMutableArray *albumTracks; // of NSOrderedSet
     DatabaseInterface *databaseInterfacePtr;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) UIInterfaceOrientation lastInterfaceOrientation;
 @end
 
 @implementation AlbumDetailViewController
@@ -56,6 +58,13 @@
     [super decodeRestorableStateWithCoder:coder];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -77,10 +86,53 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
+    
+    [super viewDidDisappear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+         
+         if (self.lastInterfaceOrientation != UIInterfaceOrientationUnknown && orientation != self.lastInterfaceOrientation)
+         {
+             if (orientation == UIInterfaceOrientationLandscapeLeft ||
+                 orientation == UIInterfaceOrientationLandscapeRight)
+             {
+                 [Utilities segueToCoverFlow:self];
+             }
+             self.lastInterfaceOrientation = orientation;
+         }
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+     }];
+    
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection
+              withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [super willTransitionToTraitCollection:newCollection withTransitionCoordinator:coordinator];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
