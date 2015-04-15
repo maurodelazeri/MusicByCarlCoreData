@@ -10,7 +10,6 @@
 #import "DatabaseManager.h"
 #import "UserPreferences.h"
 #import "CurrentSongsInfo.h"
-#import "CoverFlowViewController.h"
 #import "Crittercism.h"
 
 #import "GlobalVars.h"
