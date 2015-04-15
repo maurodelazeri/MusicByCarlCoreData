@@ -451,6 +451,31 @@ const double secondsInADay = 60.0 * 60.0 * 24.0;
     return [DateFormatter stringFromDate:date];
 }
 
++ (NSString *)interfaceOrientationToString:(UIInterfaceOrientation)orientation
+{
+    switch (orientation) {
+        case UIInterfaceOrientationLandscapeLeft:
+            return @"UIInterfaceOrientationLandscapeLeft";
+            break;
+            
+        case UIInterfaceOrientationLandscapeRight:
+            return @"UIInterfaceOrientationLandscapeRight";
+            break;
+            
+        case UIInterfaceOrientationPortrait:
+            return @"UIInterfaceOrientationPortrait";
+            break;
+            
+        case UIInterfaceOrientationPortraitUpsideDown:
+            return @"UIInterfaceOrientationPortraitUpsideDown";
+            break;
+            
+        case UIInterfaceOrientationUnknown:
+            return @"UIInterfaceOrientationUnknown";
+            break;
+    }
+}
+
 // Start a spinner in the center of the UIView specified as a parameter
 + (UIActivityIndicatorView *)startSpinner: (UIView *)view withStyle: (UIActivityIndicatorViewStyle)indicatorStyle
 {
@@ -513,6 +538,15 @@ const double secondsInADay = 60.0 * 60.0 * 24.0;
     UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return destImage;
+}
+
++ (void)segueToCoverFlow:(UIViewController *)viewController {
+    @try {
+        [viewController performSegueWithIdentifier:@"ShowCoverFlow" sender:viewController];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Segue not found: %@", exception);
+    }
 }
 
 @end

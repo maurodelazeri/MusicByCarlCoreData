@@ -71,4 +71,8 @@ extern const double secondsInADay;
 
 + (UIImage *)imageWithImage:(UIImage *)image convertToSize:(CGSize)size;
 
++ (NSString *)interfaceOrientationToString:(UIInterfaceOrientation)orientation;
+
++ (void)segueToCoverFlow:(UIViewController *)viewController;
+
 @end
