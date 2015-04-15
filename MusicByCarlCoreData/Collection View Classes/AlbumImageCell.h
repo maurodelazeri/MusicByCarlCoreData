@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AlbumImageCell : UICollectionViewCell
-
 @property (weak, nonatomic) IBOutlet UIImageView *albumArtworkImage;
+@property (weak, nonatomic) IBOutlet UIImageView *albumArtworkReflectionImage;
 @end
