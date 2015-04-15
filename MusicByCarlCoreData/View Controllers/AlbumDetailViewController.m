@@ -137,46 +137,44 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if (![[segue identifier] isEqualToString:@"ShowCoverFlow"]) {
-        NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
-        nowPlayingViewController.shuffleAllFlag = NO;
-        
-        if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
+    NowPlayingViewController *nowPlayingViewController = [segue destinationViewController];
+    nowPlayingViewController.shuffleAllFlag = NO;
+    
+    if ([[segue identifier] isEqualToString:@"nowPlayingSegue"])
+    {
+        nowPlayingViewController.startNewAudio = NO;
+        nowPlayingViewController.nowPlayingSegue = YES;
+    }
+    else
+    {
+        if ([[segue identifier] isEqualToString:@"playNewSong"])
         {
-            nowPlayingViewController.startNewAudio = NO;
-            nowPlayingViewController.nowPlayingSegue = YES;
-        }
-        else
-        {
-            if ([[segue identifier] isEqualToString:@"playNewSong"])
+            NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+            NSOrderedSet *currentAlbumTracks;
+            
+            Song *albumTrack;
+            NSInteger currentSongIndex = 0;
+            
+            CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
+            [currentSongsInfo resetCurrentSongsInfoArrays];
+            for (int i = 0; i < albumTracks.count; i++)
             {
-                NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-                NSOrderedSet *currentAlbumTracks;
+                currentAlbumTracks = [albumTracks objectAtIndex:i];
                 
-                Song *albumTrack;
-                NSInteger currentSongIndex = 0;
-                
-                CurrentSongsInfo *currentSongsInfo = [CurrentSongsInfo sharedCurrentSongsInfo];
-                [currentSongsInfo resetCurrentSongsInfoArrays];
-                for (int i = 0; i < albumTracks.count; i++)
+                for (int j = 0; j < currentAlbumTracks.count; j++)
                 {
-                    currentAlbumTracks = [albumTracks objectAtIndex:i];
+                    albumTrack = [currentAlbumTracks objectAtIndex:j];
+                    [currentSongsInfo addCurrentSongListSong:albumTrack.internalID];
                     
-                    for (int j = 0; j < currentAlbumTracks.count; j++)
+                    if (i == selectedIndexPath.section && j == selectedIndexPath.row)
                     {
-                        albumTrack = [currentAlbumTracks objectAtIndex:j];
-                        [currentSongsInfo addCurrentSongListSong:albumTrack.internalID];
-                        
-                        if (i == selectedIndexPath.section && j == selectedIndexPath.row)
-                        {
-                            [currentSongsInfo updateCurrentSongIndex:currentSongIndex];
-                        }
-                        currentSongIndex++;
+                        [currentSongsInfo updateCurrentSongIndex:currentSongIndex];
                     }
+                    currentSongIndex++;
                 }
-                nowPlayingViewController.newSongList = YES;
-                nowPlayingViewController.startNewAudio = YES;
             }
+            nowPlayingViewController.newSongList = YES;
+            nowPlayingViewController.startNewAudio = YES;
         }
     }
 }
