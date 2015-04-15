@@ -8,8 +8,8 @@
 
 #import "CoverFlowLayout.h"
 
-static const CGFloat kRotationOffset = (CGFloat)(35.0 * (M_PI / 180.0));
-static const CGFloat kMaxRotation = (CGFloat)(35.0 * (M_PI / 180.0));
+static const CGFloat kRotationOffset = (CGFloat)(40.0 * (M_PI / 180.0));
+static const CGFloat kMaxRotation = (CGFloat)(40.0 * (M_PI / 180.0));
 static const CGFloat kMaxZoom = 0.5;
 static const CGFloat kMinZoom = 1.3;
 
@@ -21,7 +21,7 @@ static const CGFloat kMinZoom = 1.3;
     self = [super init];
     
     if (self) {
-        self.itemSize = CGSizeMake(130.0f, 270.0f);
+        self.itemSize = CGSizeMake(130.0f, 300.0f);
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     }
     
@@ -87,7 +87,7 @@ static const CGFloat kMinZoom = 1.3;
             CGFloat multiplier = [self returnMultiplierForMinMultiplier:50
                                                           maxMultiplier:500
                                                             minDistance:0.2
-                                                            maxDistance:2.0
+                                                            maxDistance:1.75
                                                      andCurrentDistance:normalizedDistance];
             if (normalizedDistance < 0)
             {
