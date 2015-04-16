@@ -156,9 +156,14 @@ static AudioPlayback *refToSelf;
             AVAudioSessionInterruptionOptions interruptionOptions = [[notification.userInfo objectForKey:@"AVAudioSessionInterruptionOptionKey"] unsignedIntegerValue];
             if (interruptionOptions == AVAudioSessionInterruptionOptionShouldResume)
             {
-                // Resume the audio and update the play button
-                [self playAudio];
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"MusicByCarlCoreData.updatePlayPauseButton" object:self userInfo:nil];
+                dispatch_time_t restartTime = dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC);
+                
+                dispatch_after(restartTime, dispatch_get_global_queue(0, 0), ^
+                {
+                    // Resume the audio and update the play button
+                    [self playAudio];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"MusicByCarlCoreData.updatePlayPauseButton" object:self userInfo:nil];
+                });
             }
         }
     }
