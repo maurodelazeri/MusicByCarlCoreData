@@ -56,11 +56,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
-    
+
     CoverFlowLayout *layout = [[CoverFlowLayout alloc] init];
     collectionViewOutlet.collectionViewLayout = layout;
+    
+    self.lastInterfaceOrientation = UIInterfaceOrientationUnknown;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -85,6 +85,10 @@
     [super viewDidAppear:animated];
     
     self.lastInterfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (self.lastInterfaceOrientation == UIInterfaceOrientationPortrait)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
     
     [self displayTextForAlbumAtScreenCenter];
 }
@@ -144,7 +148,7 @@
 /*
         CGPoint touchPoint = [gestureRecognizer locationInView:collectionViewOutlet];
         NSIndexPath *indexPath = [collectionViewOutlet indexPathForItemAtPoint:touchPoint];
-        
+ 
         DatabaseInterface *databaseInterfacePtr = [[DatabaseInterface alloc] init];
         AlbumTextLabelsData *albumTextLabelsData = [Albums fetchAlbumTextDataWithAlbumInternalID:indexPath.row andDatabasePtr:databaseInterfacePtr];
         
@@ -163,8 +167,12 @@
     AlbumImageCell *cell = (AlbumImageCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     DatabaseInterface *databaseInterfacePtr = [[DatabaseInterface alloc] init];
-    cell.albumArtworkImage.image = [Albums fetchAlbumImageWithAlbumInternalID:indexPath.row withSize:CGSizeMake(130.0f, 130.0f) andDatabasePtr:databaseInterfacePtr];
-  
+    UIImage *albumArtworkImage = [Albums fetchAlbumImageWithAlbumInternalID:indexPath.row withSize:CGSizeMake(130.0f, 130.0f) andDatabasePtr:databaseInterfacePtr];
+    cell.albumArtworkImage.image = albumArtworkImage;
+    
+    cell.albumArtworkReflectionImage.image = albumArtworkImage;
+    cell.albumArtworkReflectionImage.transform = CGAffineTransformMakeRotation(M_PI); //rotation image 180 degrees (pi radians)
+    
     return cell;
 }
 
@@ -206,7 +214,7 @@
 {
     DatabaseInterface *databaseInterfacePtr = [[DatabaseInterface alloc] init];
     AlbumTextLabelsData *albumTextLabelsData = [Albums fetchAlbumTextDataWithAlbumInternalID:albumRowIndex andDatabasePtr:databaseInterfacePtr];
-
+    
     artistLabel.text = albumTextLabelsData.albumArtistString;
     
     if (albumRowIndex == currentAlbum)
