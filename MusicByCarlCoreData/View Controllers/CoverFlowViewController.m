@@ -151,7 +151,7 @@
  
         DatabaseInterface *databaseInterfacePtr = [[DatabaseInterface alloc] init];
         AlbumTextLabelsData *albumTextLabelsData = [Albums fetchAlbumTextDataWithAlbumInternalID:indexPath.row andDatabasePtr:databaseInterfacePtr];
-        
+ 
         NSLog(@"Album artist: %@", albumTextLabelsData.albumArtistString);
         NSLog(@"Album title: %@", albumTextLabelsData.albumTitleString);
         NSLog(@"Song title: %@", albumTextLabelsData.songTitleString);
