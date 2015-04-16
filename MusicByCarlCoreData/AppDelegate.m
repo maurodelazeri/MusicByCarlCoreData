@@ -142,16 +142,8 @@
 
 - (void) createCustomGUI
 {
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
-    {
-        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-        [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
-    }
-    else
-    {
-        [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-    }
-    
+    [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                                           [UIColor whiteColor],
                                                           NSForegroundColorAttributeName,
@@ -162,11 +154,10 @@
     [[UITabBar appearance] setTintColor: [UIColor blackColor]];
     
     NSShadow *shadow = [[NSShadow alloc] init];
-    shadow.shadowColor = [UIColor whiteColor];
+    shadow.shadowColor = [UIColor blackColor];
     shadow.shadowOffset = CGSizeMake(1.0f, 1.0f);
 
-    NSDictionary *titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.278 green:0.278 blue:0.278 alpha:1.0],
-                                          NSShadowAttributeName: shadow};
+    NSDictionary *titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0], NSShadowAttributeName: shadow};
     [[UITabBarItem appearance] setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
 }
 
